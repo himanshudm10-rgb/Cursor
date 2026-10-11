@@ -3,8 +3,9 @@
 A cinematic documentary cut of Pascal Dagnan-Bouveret's *Christ and the Disciples at Emmaus* (1896–97). It is built entirely in code from the supplied narration and the painting.
 
 - `docs/EDIT_NOTES.md`: structure, story beats, music cue sheet, open archival slots, and things to verify before publishing. **Read this first.**
-- `docs/shotlist.md`: all 87 shots with film timecodes, painting view coordinates (cx, cy, width in source pixels) and dissolve lengths.
+- `docs/shotlist.md`: all 84 shots with film timecodes, painting view coordinates (cx, cy, width in source pixels) and dissolve lengths.
 - `docs/transcript.txt`: the narration transcript.
+- `docs/subtitles.srt` / `docs/subtitles.ass`: corrected subtitles on the film timeline (`src/subs.py`).
 - `src/`: the pipeline.
   - `timeline.py`: maps narration time to film time, including the inserted pauses.
   - `score.py`: the original score.

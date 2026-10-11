@@ -1,0 +1,284 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Doc,Lato,40,&H00F2F2F2,&H00F2F2F2,&H80000000,&H96000000,0,0,0,0,100,100,0.5,0,1,1.6,1.2,2,200,200,46,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:03.58,0:00:04.42,Doc,,0,0,0,,{\fad(80,80)}There are thousands
+Dialogue: 0,0:00:04.46,0:00:06.42,Doc,,0,0,0,,{\fad(80,80)}of paintings of Jesus Christ,
+Dialogue: 0,0:00:06.46,0:00:08.50,Doc,,0,0,0,,{\fad(80,80)}but this might be the strangest
+Dialogue: 0,0:00:08.54,0:00:09.86,Doc,,0,0,0,,{\fad(80,80)}one ever made,
+Dialogue: 0,0:00:09.90,0:00:11.70,Doc,,0,0,0,,{\fad(80,80)}because the longer you look at it,
+Dialogue: 0,0:00:11.74,0:00:13.78,Doc,,0,0,0,,{\fad(80,80)}the more disturbing it becomes.
+Dialogue: 0,0:00:13.82,0:00:16.29,Doc,,0,0,0,,{\fad(80,80)}Jesus is staring directly at you.
+Dialogue: 0,0:00:16.33,0:00:18.45,Doc,,0,0,0,,{\fad(80,80)}His face looks almost ghost-like,
+Dialogue: 0,0:00:18.49,0:00:20.05,Doc,,0,0,0,,{\fad(80,80)}and everyone around him seems
+Dialogue: 0,0:00:20.09,0:00:21.73,Doc,,0,0,0,,{\fad(80,80)}terrified of what they are seeing.
+Dialogue: 0,0:00:21.77,0:00:22.93,Doc,,0,0,0,,{\fad(80,80)}But the strangest part
+Dialogue: 0,0:00:22.97,0:00:24.29,Doc,,0,0,0,,{\fad(80,80)}is hidden in the corner,
+Dialogue: 0,0:00:24.33,0:00:25.73,Doc,,0,0,0,,{\fad(80,80)}where three mysterious
+Dialogue: 0,0:00:25.77,0:00:27.09,Doc,,0,0,0,,{\fad(80,80)}people are watching him.
+Dialogue: 0,0:00:27.13,0:00:28.53,Doc,,0,0,0,,{\fad(80,80)}And these three people shouldn't
+Dialogue: 0,0:00:28.57,0:00:30.21,Doc,,0,0,0,,{\fad(80,80)}even exist in this painting,
+Dialogue: 0,0:00:30.25,0:00:31.49,Doc,,0,0,0,,{\fad(80,80)}because they were born almost
+Dialogue: 0,0:00:31.53,0:00:34.58,Doc,,0,0,0,,{\fad(80,80)}2,000 years after Jesus died.
+Dialogue: 0,0:00:37.69,0:00:39.73,Doc,,0,0,0,,{\fad(80,80)}So why did the artist put them there?
+Dialogue: 0,0:00:39.77,0:00:42.13,Doc,,0,0,0,,{\fad(80,80)}And what was he actually trying to tell us?
+Dialogue: 0,0:00:42.17,0:00:43.41,Doc,,0,0,0,,{\fad(80,80)}To understand that,
+Dialogue: 0,0:00:43.45,0:00:44.85,Doc,,0,0,0,,{\fad(80,80)}we first need to look at what's
+Dialogue: 0,0:00:44.89,0:00:46.33,Doc,,0,0,0,,{\fad(80,80)}happening in this painting.
+Dialogue: 0,0:00:46.37,0:00:47.45,Doc,,0,0,0,,{\fad(80,80)}At first it looks
+Dialogue: 0,0:00:47.49,0:00:49.29,Doc,,0,0,0,,{\fad(80,80)}like a normal religious scene.
+Dialogue: 0,0:00:49.33,0:00:50.89,Doc,,0,0,0,,{\fad(80,80)}Jesus is sitting at a table
+Dialogue: 0,0:00:50.93,0:00:52.25,Doc,,0,0,0,,{\fad(80,80)}holding a piece of bread,
+Dialogue: 0,0:00:52.29,0:00:53.85,Doc,,0,0,0,,{\fad(80,80)}two men are sitting beside him
+Dialogue: 0,0:00:53.89,0:00:55.77,Doc,,0,0,0,,{\fad(80,80)}and a woman is standing nearby.
+Dialogue: 0,0:00:55.81,0:00:57.37,Doc,,0,0,0,,{\fad(80,80)}But look at their faces:
+Dialogue: 0,0:00:57.41,0:00:59.63,Doc,,0,0,0,,{\fad(80,80)}one man seems completely shocked,
+Dialogue: 0,0:00:59.67,0:01:01.79,Doc,,0,0,0,,{\fad(80,80)}while the other is leaning toward Jesus,
+Dialogue: 0,0:01:01.83,0:01:02.99,Doc,,0,0,0,,{\fad(80,80)}almost as if he cannot
+Dialogue: 0,0:01:03.03,0:01:04.35,Doc,,0,0,0,,{\fad(80,80)}believe what he's seeing.
+Dialogue: 0,0:01:04.39,0:01:06.03,Doc,,0,0,0,,{\fad(80,80)}Even the woman standing beside them
+Dialogue: 0,0:01:06.07,0:01:07.63,Doc,,0,0,0,,{\fad(80,80)}has stopped what she was doing.
+Dialogue: 0,0:01:07.67,0:01:09.55,Doc,,0,0,0,,{\fad(80,80)}And then there's Jesus himself.
+Dialogue: 0,0:01:09.59,0:01:10.91,Doc,,0,0,0,,{\fad(80,80)}Unlike everyone else,
+Dialogue: 0,0:01:10.95,0:01:12.99,Doc,,0,0,0,,{\fad(80,80)}his face looks slightly blurred.
+Dialogue: 0,0:01:13.03,0:01:15.23,Doc,,0,0,0,,{\fad(80,80)}There's a strange glow surrounding his body,
+Dialogue: 0,0:01:15.27,0:01:16.83,Doc,,0,0,0,,{\fad(80,80)}and the sunlight behind him makes
+Dialogue: 0,0:01:16.87,0:01:18.91,Doc,,0,0,0,,{\fad(80,80)}him look almost like an apparition.
+Dialogue: 0,0:01:18.95,0:01:21.71,Doc,,0,0,0,,{\fad(80,80)}But why would someone paint Jesus like this?
+Dialogue: 0,0:01:21.75,0:01:23.87,Doc,,0,0,0,,{\fad(80,80)}Well, this painting is called Christ
+Dialogue: 0,0:01:23.91,0:01:25.71,Doc,,0,0,0,,{\fad(80,80)}and the Disciples at Emmaus.
+Dialogue: 0,0:01:25.75,0:01:27.39,Doc,,0,0,0,,{\fad(80,80)}It was created by a French artist
+Dialogue: 0,0:01:27.43,0:01:29.47,Doc,,0,0,0,,{\fad(80,80)}named Pascal Dagnan-Bouveret
+Dialogue: 0,0:01:29.51,0:01:31.52,Doc,,0,0,0,,{\fad(80,80)}between 1896 and 1897,
+Dialogue: 0,0:01:32.07,0:01:33.63,Doc,,0,0,0,,{\fad(80,80)}and the scene comes from a very
+Dialogue: 0,0:01:33.67,0:01:35.39,Doc,,0,0,0,,{\fad(80,80)}interesting story in the Bible.
+Dialogue: 0,0:01:35.43,0:01:37.07,Doc,,0,0,0,,{\fad(80,80)}According to the Gospel of Luke,
+Dialogue: 0,0:01:37.11,0:01:39.44,Doc,,0,0,0,,{\fad(80,80)}a few days after Jesus was crucified,
+Dialogue: 0,0:01:39.48,0:01:40.80,Doc,,0,0,0,,{\fad(80,80)}two of his followers were walking
+Dialogue: 0,0:01:40.84,0:01:42.72,Doc,,0,0,0,,{\fad(80,80)}toward a village called Emmaus.
+Dialogue: 0,0:01:42.76,0:01:44.08,Doc,,0,0,0,,{\fad(80,80)}They were heartbroken.
+Dialogue: 0,0:01:44.12,0:01:45.36,Doc,,0,0,0,,{\fad(80,80)}Jesus had been killed
+Dialogue: 0,0:01:45.40,0:01:47.04,Doc,,0,0,0,,{\fad(80,80)}and they were still trying to understand
+Dialogue: 0,0:01:47.08,0:01:48.48,Doc,,0,0,0,,{\fad(80,80)}everything that had happened.
+Dialogue: 0,0:01:48.52,0:01:49.76,Doc,,0,0,0,,{\fad(80,80)}But while they were walking,
+Dialogue: 0,0:01:49.80,0:01:50.88,Doc,,0,0,0,,{\fad(80,80)}a stranger approached
+Dialogue: 0,0:01:50.92,0:01:52.43,Doc,,0,0,0,,{\fad(80,80)}them and started talking.
+Dialogue: 0,0:01:52.47,0:01:54.03,Doc,,0,0,0,,{\fad(80,80)}He asked them what they were discussing,
+Dialogue: 0,0:01:54.07,0:01:56.75,Doc,,0,0,0,,{\fad(80,80)}and they began telling him about Jesus, his death,
+Dialogue: 0,0:01:56.79,0:01:58.99,Doc,,0,0,0,,{\fad(80,80)}and everything that had happened in Jerusalem.
+Dialogue: 0,0:01:59.03,0:02:00.67,Doc,,0,0,0,,{\fad(80,80)}The stranger listened carefully,
+Dialogue: 0,0:02:00.71,0:02:01.87,Doc,,0,0,0,,{\fad(80,80)}and then began explaining
+Dialogue: 0,0:02:01.91,0:02:03.07,Doc,,0,0,0,,{\fad(80,80)}the Scriptures to them.
+Dialogue: 0,0:02:03.11,0:02:05.72,Doc,,0,0,0,,{\fad(80,80)}They continued walking together for hours.
+Dialogue: 0,0:02:05.76,0:02:07.48,Doc,,0,0,0,,{\fad(80,80)}And here's the strange part:
+Dialogue: 0,0:02:07.52,0:02:09.24,Doc,,0,0,0,,{\fad(80,80)}neither of the two men recognized
+Dialogue: 0,0:02:09.28,0:02:11.16,Doc,,0,0,0,,{\fad(80,80)}who this stranger actually was.
+Dialogue: 0,0:02:11.20,0:02:13.16,Doc,,0,0,0,,{\fad(80,80)}When they finally reached Emmaus,
+Dialogue: 0,0:02:13.20,0:02:14.44,Doc,,0,0,0,,{\fad(80,80)}it was getting late,
+Dialogue: 0,0:02:14.48,0:02:17.32,Doc,,0,0,0,,{\fad(80,80)}so they invited him to stay and have dinner.
+Dialogue: 0,0:02:17.36,0:02:19.24,Doc,,0,0,0,,{\fad(80,80)}And while they were sitting at the table,
+Dialogue: 0,0:02:19.28,0:02:21.48,Doc,,0,0,0,,{\fad(80,80)}the stranger picked up a piece of bread,
+Dialogue: 0,0:02:21.52,0:02:24.29,Doc,,0,0,0,,{\fad(80,80)}blessed it, and broke it.
+Dialogue: 0,0:02:25.54,0:02:28.30,Doc,,0,0,0,,{\fad(80,80)}Suddenly both men recognized him.
+Dialogue: 0,0:02:28.34,0:02:29.82,Doc,,0,0,0,,{\fad(80,80)}It was Jesus.
+Dialogue: 0,0:02:29.86,0:02:32.30,Doc,,0,0,0,,{\fad(80,80)}The same Jesus they had seen crucified
+Dialogue: 0,0:02:32.34,0:02:34.51,Doc,,0,0,0,,{\fad(80,80)}was now sitting right in front of them.
+Dialogue: 0,0:02:34.55,0:02:36.11,Doc,,0,0,0,,{\fad(80,80)}And according to the Bible,
+Dialogue: 0,0:02:36.15,0:02:37.95,Doc,,0,0,0,,{\fad(80,80)}the moment they recognized him,
+Dialogue: 0,0:02:37.99,0:02:39.70,Doc,,0,0,0,,{\fad(80,80)}he disappeared.
+Dialogue: 0,0:02:41.87,0:02:44.39,Doc,,0,0,0,,{\fad(80,80)}Now imagine witnessing something like that.
+Dialogue: 0,0:02:44.43,0:02:46.39,Doc,,0,0,0,,{\fad(80,80)}You spend hours talking to someone
+Dialogue: 0,0:02:46.43,0:02:48.07,Doc,,0,0,0,,{\fad(80,80)}without knowing who he is.
+Dialogue: 0,0:02:48.11,0:02:49.20,Doc,,0,0,0,,{\fad(80,80)}Then suddenly,
+Dialogue: 0,0:02:49.24,0:02:51.04,Doc,,0,0,0,,{\fad(80,80)}you realize that the person sitting in front
+Dialogue: 0,0:02:51.08,0:02:53.76,Doc,,0,0,0,,{\fad(80,80)}of you is someone you believed was dead,
+Dialogue: 0,0:02:53.80,0:02:57.01,Doc,,0,0,0,,{\fad(80,80)}and before you can even react, he's gone.
+Dialogue: 0,0:02:57.68,0:02:59.08,Doc,,0,0,0,,{\fad(80,80)}That's the moment the artist
+Dialogue: 0,0:02:59.12,0:03:00.28,Doc,,0,0,0,,{\fad(80,80)}wanted to capture.
+Dialogue: 0,0:03:00.32,0:03:01.96,Doc,,0,0,0,,{\fad(80,80)}And once you know this story,
+Dialogue: 0,0:03:02.00,0:03:04.73,Doc,,0,0,0,,{\fad(80,80)}the painting starts making a lot more sense.
+Dialogue: 0,0:03:04.77,0:03:07.29,Doc,,0,0,0,,{\fad(80,80)}The two disciples aren't simply surprised,
+Dialogue: 0,0:03:07.33,0:03:08.49,Doc,,0,0,0,,{\fad(80,80)}they're witnessing something
+Dialogue: 0,0:03:08.53,0:03:10.49,Doc,,0,0,0,,{\fad(80,80)}they never thought was possible.
+Dialogue: 0,0:03:10.53,0:03:12.17,Doc,,0,0,0,,{\fad(80,80)}Even the woman standing nearby
+Dialogue: 0,0:03:12.21,0:03:13.85,Doc,,0,0,0,,{\fad(80,80)}looks completely frozen.
+Dialogue: 0,0:03:13.89,0:03:15.45,Doc,,0,0,0,,{\fad(80,80)}But what's really fascinating
+Dialogue: 0,0:03:15.49,0:03:18.08,Doc,,0,0,0,,{\fad(80,80)}is how the artist painted Jesus.
+Dialogue: 0,0:03:18.12,0:03:19.44,Doc,,0,0,0,,{\fad(80,80)}If you look behind him,
+Dialogue: 0,0:03:19.48,0:03:21.84,Doc,,0,0,0,,{\fad(80,80)}you'll notice that the sun is setting.
+Dialogue: 0,0:03:21.88,0:03:23.92,Doc,,0,0,0,,{\fad(80,80)}Normally, when someone sits directly
+Dialogue: 0,0:03:23.96,0:03:25.52,Doc,,0,0,0,,{\fad(80,80)}in front of such a bright light,
+Dialogue: 0,0:03:25.56,0:03:27.68,Doc,,0,0,0,,{\fad(80,80)}their face becomes dark because the light
+Dialogue: 0,0:03:27.72,0:03:29.44,Doc,,0,0,0,,{\fad(80,80)}is coming from behind them.
+Dialogue: 0,0:03:29.48,0:03:32.11,Doc,,0,0,0,,{\fad(80,80)}But here, something different is happening.
+Dialogue: 0,0:03:32.15,0:03:34.19,Doc,,0,0,0,,{\fad(80,80)}Jesus' face, his hands,
+Dialogue: 0,0:03:34.23,0:03:36.75,Doc,,0,0,0,,{\fad(80,80)}and even his white clothes are glowing.
+Dialogue: 0,0:03:36.79,0:03:38.27,Doc,,0,0,0,,{\fad(80,80)}It's almost as if the light
+Dialogue: 0,0:03:38.31,0:03:39.79,Doc,,0,0,0,,{\fad(80,80)}isn't coming from the sun,
+Dialogue: 0,0:03:39.83,0:03:42.03,Doc,,0,0,0,,{\fad(80,80)}it's coming from Jesus himself.
+Dialogue: 0,0:03:42.07,0:03:44.19,Doc,,0,0,0,,{\fad(80,80)}And that's probably why his face looks
+Dialogue: 0,0:03:44.23,0:03:46.23,Doc,,0,0,0,,{\fad(80,80)}so different from everyone else's.
+Dialogue: 0,0:03:46.27,0:03:47.35,Doc,,0,0,0,,{\fad(80,80)}The artist wanted him
+Dialogue: 0,0:03:47.39,0:03:49.43,Doc,,0,0,0,,{\fad(80,80)}to appear almost supernatural,
+Dialogue: 0,0:03:49.47,0:03:50.95,Doc,,0,0,0,,{\fad(80,80)}as though he was somewhere between
+Dialogue: 0,0:03:50.99,0:03:54.08,Doc,,0,0,0,,{\fad(80,80)}the physical world and something beyond it.
+Dialogue: 0,0:03:54.75,0:03:56.31,Doc,,0,0,0,,{\fad(80,80)}But now let's return to those three
+Dialogue: 0,0:03:56.35,0:03:58.71,Doc,,0,0,0,,{\fad(80,80)}mysterious people standing in the corner,
+Dialogue: 0,0:03:58.75,0:04:00.39,Doc,,0,0,0,,{\fad(80,80)}because this is where the painting
+Dialogue: 0,0:04:00.43,0:04:02.12,Doc,,0,0,0,,{\fad(80,80)}becomes even stranger.
+Dialogue: 0,0:04:02.16,0:04:04.76,Doc,,0,0,0,,{\fad(80,80)}If you look carefully, you'll notice a man,
+Dialogue: 0,0:04:04.80,0:04:07.16,Doc,,0,0,0,,{\fad(80,80)}a woman, and a young boy watching
+Dialogue: 0,0:04:07.20,0:04:08.84,Doc,,0,0,0,,{\fad(80,80)}everything from the shadows.
+Dialogue: 0,0:04:08.88,0:04:10.60,Doc,,0,0,0,,{\fad(80,80)}And unlike the other characters,
+Dialogue: 0,0:04:10.64,0:04:11.56,Doc,,0,0,0,,{\fad(80,80)}they're wearing clothes
+Dialogue: 0,0:04:11.60,0:04:13.32,Doc,,0,0,0,,{\fad(80,80)}from the nineteenth century.
+Dialogue: 0,0:04:13.36,0:04:15.05,Doc,,0,0,0,,{\fad(80,80)}So who are they?
+Dialogue: 0,0:04:16.34,0:04:18.14,Doc,,0,0,0,,{\fad(80,80)}Well, the man is none other
+Dialogue: 0,0:04:18.18,0:04:19.66,Doc,,0,0,0,,{\fad(80,80)}than the artist himself,
+Dialogue: 0,0:04:19.70,0:04:20.86,Doc,,0,0,0,,{\fad(80,80)}Pascal Dagnan-Bouveret.
+Dialogue: 0,0:04:20.90,0:04:23.50,Doc,,0,0,0,,{\fad(80,80)}The woman is his wife, Anne-Marie,
+Dialogue: 0,0:04:23.54,0:04:26.94,Doc,,0,0,0,,{\fad(80,80)}and the young boy is their son, Jean.
+Dialogue: 0,0:04:26.98,0:04:29.58,Doc,,0,0,0,,{\fad(80,80)}Yes, the artist actually painted himself
+Dialogue: 0,0:04:29.62,0:04:31.83,Doc,,0,0,0,,{\fad(80,80)}and his entire family witnessing
+Dialogue: 0,0:04:31.87,0:04:33.43,Doc,,0,0,0,,{\fad(80,80)}the resurrection of Jesus.
+Dialogue: 0,0:04:33.47,0:04:35.35,Doc,,0,0,0,,{\fad(80,80)}And we know this because a surviving
+Dialogue: 0,0:04:35.39,0:04:36.71,Doc,,0,0,0,,{\fad(80,80)}study for the painting helps
+Dialogue: 0,0:04:36.75,0:04:38.55,Doc,,0,0,0,,{\fad(80,80)}identify these three figures.
+Dialogue: 0,0:04:38.59,0:04:40.95,Doc,,0,0,0,,{\fad(80,80)}But think about how unusual that is.
+Dialogue: 0,0:04:40.99,0:04:43.43,Doc,,0,0,0,,{\fad(80,80)}The events shown in this painting supposedly
+Dialogue: 0,0:04:43.47,0:04:46.38,Doc,,0,0,0,,{\fad(80,80)}happened nearly 2,000 years earlier.
+Dialogue: 0,0:04:46.42,0:04:48.30,Doc,,0,0,0,,{\fad(80,80)}Yet the artist decided to place
+Dialogue: 0,0:04:48.34,0:04:50.38,Doc,,0,0,0,,{\fad(80,80)}his own family right there,
+Dialogue: 0,0:04:50.42,0:04:52.30,Doc,,0,0,0,,{\fad(80,80)}as if they were physically present when
+Dialogue: 0,0:04:52.34,0:04:55.02,Doc,,0,0,0,,{\fad(80,80)}Jesus revealed himself to his disciples.
+Dialogue: 0,0:04:55.06,0:04:57.90,Doc,,0,0,0,,{\fad(80,80)}And naturally, that raises another question:
+Dialogue: 0,0:04:57.94,0:05:00.43,Doc,,0,0,0,,{\fad(80,80)}why would he do something like this?
+Dialogue: 0,0:05:02.17,0:05:03.49,Doc,,0,0,0,,{\fad(80,80)}To understand that,
+Dialogue: 0,0:05:03.53,0:05:04.61,Doc,,0,0,0,,{\fad(80,80)}we need to know a little
+Dialogue: 0,0:05:04.65,0:05:06.37,Doc,,0,0,0,,{\fad(80,80)}about the artist himself.
+Dialogue: 0,0:05:06.41,0:05:09.17,Doc,,0,0,0,,{\fad(80,80)}Dagnan-Bouveret was actually one of the most
+Dialogue: 0,0:05:09.21,0:05:11.65,Doc,,0,0,0,,{\fad(80,80)}successful French painters of his time.
+Dialogue: 0,0:05:11.69,0:05:12.93,Doc,,0,0,0,,{\fad(80,80)}He was known for creating
+Dialogue: 0,0:05:12.97,0:05:15.23,Doc,,0,0,0,,{\fad(80,80)}incredibly realistic paintings,
+Dialogue: 0,0:05:15.27,0:05:17.15,Doc,,0,0,0,,{\fad(80,80)}and he even used photographs to help
+Dialogue: 0,0:05:17.19,0:05:19.71,Doc,,0,0,0,,{\fad(80,80)}him study people and build his scenes.
+Dialogue: 0,0:05:19.75,0:05:20.75,Doc,,0,0,0,,{\fad(80,80)}But during the 1890s,
+Dialogue: 0,0:05:20.79,0:05:23.23,Doc,,0,0,0,,{\fad(80,80)}something began to change.
+Dialogue: 0,0:05:23.27,0:05:25.71,Doc,,0,0,0,,{\fad(80,80)}He started moving away from ordinary scenes
+Dialogue: 0,0:05:25.75,0:05:28.11,Doc,,0,0,0,,{\fad(80,80)}of daily life and became increasingly
+Dialogue: 0,0:05:28.15,0:05:30.31,Doc,,0,0,0,,{\fad(80,80)}interested in religious paintings.
+Dialogue: 0,0:05:30.35,0:05:32.47,Doc,,0,0,0,,{\fad(80,80)}Some historians believe his wife,
+Dialogue: 0,0:05:32.51,0:05:35.03,Doc,,0,0,0,,{\fad(80,80)}Anne-Marie, who was a devoted Catholic,
+Dialogue: 0,0:05:35.07,0:05:37.03,Doc,,0,0,0,,{\fad(80,80)}may have influenced this change.
+Dialogue: 0,0:05:37.07,0:05:38.63,Doc,,0,0,0,,{\fad(80,80)}And this is important because it
+Dialogue: 0,0:05:38.67,0:05:40.63,Doc,,0,0,0,,{\fad(80,80)}helps us understand why he placed
+Dialogue: 0,0:05:40.67,0:05:42.76,Doc,,0,0,0,,{\fad(80,80)}his family inside the painting.
+Dialogue: 0,0:05:42.80,0:05:43.80,Doc,,0,0,0,,{\fad(80,80)}He wasn't simply trying
+Dialogue: 0,0:05:43.84,0:05:45.80,Doc,,0,0,0,,{\fad(80,80)}to make the artwork unusual,
+Dialogue: 0,0:05:45.84,0:05:47.16,Doc,,0,0,0,,{\fad(80,80)}he was expressing something
+Dialogue: 0,0:05:47.20,0:05:49.00,Doc,,0,0,0,,{\fad(80,80)}about his own faith.
+Dialogue: 0,0:05:49.04,0:05:51.64,Doc,,0,0,0,,{\fad(80,80)}For him, the miracles described in the Bible
+Dialogue: 0,0:05:51.68,0:05:53.16,Doc,,0,0,0,,{\fad(80,80)}weren't just events that happened
+Dialogue: 0,0:05:53.20,0:05:54.78,Doc,,0,0,0,,{\fad(80,80)}thousands of years ago,
+Dialogue: 0,0:05:54.82,0:05:56.94,Doc,,0,0,0,,{\fad(80,80)}they were experiences that could still hold
+Dialogue: 0,0:05:56.98,0:05:59.58,Doc,,0,0,0,,{\fad(80,80)}meaning for people living in his own time.
+Dialogue: 0,0:05:59.62,0:06:01.90,Doc,,0,0,0,,{\fad(80,80)}And by painting himself, his wife,
+Dialogue: 0,0:06:01.94,0:06:04.14,Doc,,0,0,0,,{\fad(80,80)}and his son standing beside Jesus,
+Dialogue: 0,0:06:04.18,0:06:05.82,Doc,,0,0,0,,{\fad(80,80)}he was showing that they too
+Dialogue: 0,0:06:05.86,0:06:07.02,Doc,,0,0,0,,{\fad(80,80)}could become witnesses
+Dialogue: 0,0:06:07.06,0:06:09.10,Doc,,0,0,0,,{\fad(80,80)}to this moment through their faith.
+Dialogue: 0,0:06:09.14,0:06:11.66,Doc,,0,0,0,,{\fad(80,80)}But there's another interesting detail here.
+Dialogue: 0,0:06:11.70,0:06:13.74,Doc,,0,0,0,,{\fad(80,80)}When you stand in front of this painting,
+Dialogue: 0,0:06:13.78,0:06:15.02,Doc,,0,0,0,,{\fad(80,80)}you're almost standing
+Dialogue: 0,0:06:15.06,0:06:17.02,Doc,,0,0,0,,{\fad(80,80)}alongside the artist's family.
+Dialogue: 0,0:06:17.06,0:06:19.58,Doc,,0,0,0,,{\fad(80,80)}They're watching Jesus, and so are you.
+Dialogue: 0,0:06:19.62,0:06:21.10,Doc,,0,0,0,,{\fad(80,80)}And because Jesus is staring
+Dialogue: 0,0:06:21.14,0:06:22.82,Doc,,0,0,0,,{\fad(80,80)}directly out of the painting,
+Dialogue: 0,0:06:22.86,0:06:24.02,Doc,,0,0,0,,{\fad(80,80)}it almost feels as though
+Dialogue: 0,0:06:24.06,0:06:25.86,Doc,,0,0,0,,{\fad(80,80)}he's looking at you as well.
+Dialogue: 0,0:06:25.90,0:06:27.30,Doc,,0,0,0,,{\fad(80,80)}So instead of simply showing
+Dialogue: 0,0:06:27.34,0:06:28.90,Doc,,0,0,0,,{\fad(80,80)}you an event from the Bible,
+Dialogue: 0,0:06:28.94,0:06:30.26,Doc,,0,0,0,,{\fad(80,80)}the artist makes you feel
+Dialogue: 0,0:06:30.30,0:06:31.94,Doc,,0,0,0,,{\fad(80,80)}like you're part of it.
+Dialogue: 0,0:06:31.98,0:06:34.18,Doc,,0,0,0,,{\fad(80,80)}And when this painting was first exhibited,
+Dialogue: 0,0:06:34.22,0:06:36.63,Doc,,0,0,0,,{\fad(80,80)}it attracted enormous attention.
+Dialogue: 0,0:06:36.67,0:06:37.83,Doc,,0,0,0,,{\fad(80,80)}It was eventually purchased
+Dialogue: 0,0:06:37.87,0:06:39.43,Doc,,0,0,0,,{\fad(80,80)}by Henry Clay Frick,
+Dialogue: 0,0:06:39.47,0:06:41.03,Doc,,0,0,0,,{\fad(80,80)}one of the richest industrialists
+Dialogue: 0,0:06:41.07,0:06:43.43,Doc,,0,0,0,,{\fad(80,80)}in America and a famous art collector.
+Dialogue: 0,0:06:43.47,0:06:44.95,Doc,,0,0,0,,{\fad(80,80)}Frick owned paintings by some
+Dialogue: 0,0:06:44.99,0:06:46.79,Doc,,0,0,0,,{\fad(80,80)}of the greatest European artists,
+Dialogue: 0,0:06:46.83,0:06:49.72,Doc,,0,0,0,,{\fad(80,80)}including Rembrandt, Vermeer, and Goya,
+Dialogue: 0,0:06:49.76,0:06:51.16,Doc,,0,0,0,,{\fad(80,80)}and he wanted this painting
+Dialogue: 0,0:06:51.20,0:06:52.60,Doc,,0,0,0,,{\fad(80,80)}in his collection too.
+Dialogue: 0,0:06:52.64,0:06:54.68,Doc,,0,0,0,,{\fad(80,80)}At that time, Dagnan-Bouveret
+Dialogue: 0,0:06:54.72,0:06:56.28,Doc,,0,0,0,,{\fad(80,80)}was at the height of his career.
+Dialogue: 0,0:06:56.32,0:06:58.52,Doc,,0,0,0,,{\fad(80,80)}His paintings were highly valued.
+Dialogue: 0,0:06:58.56,0:07:02.45,Doc,,0,0,0,,{\fad(80,80)}He had received major awards, and in 1900,
+Dialogue: 0,0:07:02.49,0:07:04.37,Doc,,0,0,0,,{\fad(80,80)}he became a member of the prestigious
+Dialogue: 0,0:07:04.41,0:07:06.54,Doc,,0,0,0,,{\fad(80,80)}Institut de France.
+Dialogue: 0,0:07:07.25,0:07:09.37,Doc,,0,0,0,,{\fad(80,80)}But what happened next is almost
+Dialogue: 0,0:07:09.41,0:07:11.93,Doc,,0,0,0,,{\fad(80,80)}as strange as the painting itself,
+Dialogue: 0,0:07:11.97,0:07:14.33,Doc,,0,0,0,,{\fad(80,80)}because despite all his success,
+Dialogue: 0,0:07:14.37,0:07:16.91,Doc,,0,0,0,,{\fad(80,80)}the artist was eventually forgotten.
+Dialogue: 0,0:07:16.95,0:07:19.07,Doc,,0,0,0,,{\fad(80,80)}As the twentieth century progressed,
+Dialogue: 0,0:07:19.11,0:07:20.51,Doc,,0,0,0,,{\fad(80,80)}people became more interested
+Dialogue: 0,0:07:20.55,0:07:22.59,Doc,,0,0,0,,{\fad(80,80)}in newer styles of painting.
+Dialogue: 0,0:07:22.63,0:07:24.75,Doc,,0,0,0,,{\fad(80,80)}Artists like Picasso were changing
+Dialogue: 0,0:07:24.79,0:07:26.35,Doc,,0,0,0,,{\fad(80,80)}what art could look like,
+Dialogue: 0,0:07:26.39,0:07:28.51,Doc,,0,0,0,,{\fad(80,80)}and the realistic academic paintings
+Dialogue: 0,0:07:28.55,0:07:30.19,Doc,,0,0,0,,{\fad(80,80)}that Dagnan-Bouveret was famous
+Dialogue: 0,0:07:30.23,0:07:32.55,Doc,,0,0,0,,{\fad(80,80)}for slowly fell out of fashion.
+Dialogue: 0,0:07:32.59,0:07:35.08,Doc,,0,0,0,,{\fad(80,80)}By the time he died in 1929,
+Dialogue: 0,0:07:35.15,0:07:36.71,Doc,,0,0,0,,{\fad(80,80)}the art world had already
+Dialogue: 0,0:07:36.75,0:07:38.31,Doc,,0,0,0,,{\fad(80,80)}changed dramatically,
+Dialogue: 0,0:07:38.35,0:07:40.15,Doc,,0,0,0,,{\fad(80,80)}and over the following decades
+Dialogue: 0,0:07:40.19,0:07:42.71,Doc,,0,0,0,,{\fad(80,80)}his name became far less familiar.
+Dialogue: 0,0:07:42.75,0:07:44.92,Doc,,0,0,0,,{\fad(80,80)}Think about the irony of that.
+Dialogue: 0,0:07:44.96,0:07:46.84,Doc,,0,0,0,,{\fad(80,80)}Here was a man who painted himself
+Dialogue: 0,0:07:46.88,0:07:49.64,Doc,,0,0,0,,{\fad(80,80)}and his family into a scene from the Bible,
+Dialogue: 0,0:07:49.68,0:07:51.56,Doc,,0,0,0,,{\fad(80,80)}almost as if he wanted to preserve
+Dialogue: 0,0:07:51.60,0:07:53.24,Doc,,0,0,0,,{\fad(80,80)}their presence forever.
+Dialogue: 0,0:07:53.28,0:07:54.60,Doc,,0,0,0,,{\fad(80,80)}But the world eventually
+Dialogue: 0,0:07:54.64,0:07:56.76,Doc,,0,0,0,,{\fad(80,80)}forgot the man who created it.
+Dialogue: 0,0:07:56.80,0:07:58.52,Doc,,0,0,0,,{\fad(80,80)}Today, the painting is preserved
+Dialogue: 0,0:07:58.56,0:08:01.37,Doc,,0,0,0,,{\fad(80,80)}at the Carnegie Museum of Art in Pittsburgh.
+Dialogue: 0,0:08:01.41,0:08:02.65,Doc,,0,0,0,,{\fad(80,80)}And more than a century
+Dialogue: 0,0:08:02.69,0:08:04.09,Doc,,0,0,0,,{\fad(80,80)}after it was created,
+Dialogue: 0,0:08:04.13,0:08:05.77,Doc,,0,0,0,,{\fad(80,80)}those three figures are still
+Dialogue: 0,0:08:05.81,0:08:07.21,Doc,,0,0,0,,{\fad(80,80)}standing in the shadows,
+Dialogue: 0,0:08:07.25,0:08:08.57,Doc,,0,0,0,,{\fad(80,80)}watching Jesus reveal
+Dialogue: 0,0:08:08.61,0:08:10.49,Doc,,0,0,0,,{\fad(80,80)}himself to his disciples,
+Dialogue: 0,0:08:10.53,0:08:13.13,Doc,,0,0,0,,{\fad(80,80)}while Jesus continues to stare directly
+Dialogue: 0,0:08:13.17,0:08:15.11,Doc,,0,0,0,,{\fad(80,80)}at whoever looks at the painting.
+Dialogue: 0,0:08:15.15,0:08:16.63,Doc,,0,0,0,,{\fad(80,80)}And perhaps that's what makes
+Dialogue: 0,0:08:16.67,0:08:18.79,Doc,,0,0,0,,{\fad(80,80)}this artwork so strange.
+Dialogue: 0,0:08:18.83,0:08:20.55,Doc,,0,0,0,,{\fad(80,80)}Because most religious paintings
+Dialogue: 0,0:08:20.59,0:08:22.23,Doc,,0,0,0,,{\fad(80,80)}show us something that supposedly
+Dialogue: 0,0:08:22.27,0:08:24.39,Doc,,0,0,0,,{\fad(80,80)}happened a very long time ago,
+Dialogue: 0,0:08:24.43,0:08:26.31,Doc,,0,0,0,,{\fad(80,80)}but this one makes us feel as though
+Dialogue: 0,0:08:26.35,0:08:28.62,Doc,,0,0,0,,{\fad(80,80)}it's happening right in front of us.
+Dialogue: 0,0:08:28.66,0:08:29.90,Doc,,0,0,0,,{\fad(80,80)}And the artist didn't just
+Dialogue: 0,0:08:29.94,0:08:31.90,Doc,,0,0,0,,{\fad(80,80)}paint himself into that moment.
+Dialogue: 0,0:08:31.94,0:08:35.35,Doc,,0,0,0,,{\fad(80,80)}In a way, he also left a place for us.
+Dialogue: 0,0:08:36.58,0:08:37.98,Doc,,0,0,0,,{\fad(80,80)}So now that you know the story
+Dialogue: 0,0:08:38.02,0:08:39.18,Doc,,0,0,0,,{\fad(80,80)}behind this painting,
+Dialogue: 0,0:08:39.22,0:08:41.82,Doc,,0,0,0,,{\fad(80,80)}look at Jesus' face one more time.
+Dialogue: 0,0:08:41.86,0:08:43.34,Doc,,0,0,0,,{\fad(80,80)}Does he still look like someone
+Dialogue: 0,0:08:43.38,0:08:44.92,Doc,,0,0,0,,{\fad(80,80)}sitting at a dinner table?
+Dialogue: 0,0:08:44.96,0:08:46.44,Doc,,0,0,0,,{\fad(80,80)}Or does it feel like he's
+Dialogue: 0,0:08:46.48,0:08:47.96,Doc,,0,0,0,,{\fad(80,80)}looking directly at you?
+Dialogue: 0,0:08:48.00,0:08:49.88,Doc,,0,0,0,,{\fad(80,80)}I'd love to know what you think.
+Dialogue: 0,0:08:49.92,0:08:51.80,Doc,,0,0,0,,{\fad(80,80)}Because once you notice everything
+Dialogue: 0,0:08:51.84,0:08:53.40,Doc,,0,0,0,,{\fad(80,80)}hidden inside this painting,
+Dialogue: 0,0:08:53.44,0:08:54.84,Doc,,0,0,0,,{\fad(80,80)}it's very difficult to look
+Dialogue: 0,0:08:54.88,0:08:56.95,Doc,,0,0,0,,{\fad(80,80)}at it the same way again.

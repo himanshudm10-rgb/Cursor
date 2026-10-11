@@ -10,6 +10,11 @@ The full shot list, with timecodes, view coordinates and dissolve lengths, is in
 
 ---
 
+## Revision 2
+
+- **No fades.** There is no fade-in, no fade-out and no dip to black anywhere. The painting is on screen from frame 1, and the film ends on Jesus's face. Dissolves between shots remain.
+- **Subtitles.** Single-line subtitles are burned in (Lato 40 px, bottom centre, clear of the name captions). Recognition errors from the transcript are corrected (Emmaus, Dagnan-Bouveret, dates). Separate files: `subtitles.srt` and `subtitles.ass`, built by `src/subs.py`.
+
 ## 1. What this cut is, and what it is not yet
 
 The session that built this cut had no access to Wikimedia, museum image APIs or any stock or AI-video service. Only GitHub and the package registries were reachable. That shaped the cut in three ways:
@@ -19,7 +24,7 @@ The session that built this cut had no access to Wikimedia, museum image APIs or
 | Painting as primary evidence | Every analytical beat uses the original painting. Framing is camera moves only. Figures are never moved, animated, repainted or invented. | Done. The source file should still be replaced (see §5). |
 | Biblical recreations (road, stranger, dinner) | Procedural matte-painting plates rendered in code: the road at three times of day, the village at dusk, a candlelit table and an extinguished candle. Figures stay distant, backlit silhouettes, so no faces are invented. | Placeholder-grade. Swap for filmed or licensed footage, or AI recreations, if you have them. |
 | Authentic portrait of the artist | **Not available.** The reveal uses the artist's own self-portrait *inside* the painting, which is authentic evidence. | Slot open (see §4). |
-| Surviving preparatory study of the family | **Not available.** Shot 54 holds on the family detail while the narrator mentions the study. | Slot open. |
+| Surviving preparatory study of the family | **Not available.** Shot 52 holds on the family detail while the narrator mentions the study. | Slot open. |
 | 19th-century Paris, Frick and exhibition archival | Procedural studio, church and gallery plates, plus restrained lower-thirds. | Slots open. |
 | Examples of newer movements (Picasso etc.) | Deliberately **not** shown: none were available, and Picasso's work is still in copyright. A dimmed gallery plate carries the line. | Slot open (licensed images only). |
 
@@ -33,12 +38,12 @@ Times are film time (mm:ss). A ‖ marks a pause I inserted into an existing sil
 
 | Time | Section | Picture | Sound |
 |---|---|---|---|
-| 00:00 | Cold open | 2.6 s of black. The painting rises out of darkness on "thousands of paintings…". A 13 s unbroken push ends on Christ's eyes at "staring directly at you". | Distant wind. A contrabass D drone enters, then a high string A, then B♭ rubbing against it. |
+| 00:00 | Cold open | The painting is on screen from the first frame (no fade-in). A 16 s unbroken push ends on Christ's eyes at "staring directly at you". | Distant wind. A contrabass D drone enters, then a high string A, then B♭ rubbing against it. |
 | 00:16 | "ghost-like" | Held on the face. Bloom on the existing halo via the grade only. | — |
 | 00:20 | "terrified" | Three short details: left disciple, right disciple, servant. | The uncomfortable note: E♭ in cello and bass against the D. |
 | 00:23 | "hidden in the corner" | Slow move to the right edge. The family stays underexposed and softened, so they can't be identified yet. | Soft "oohs" cluster. |
-| 00:31 | "born almost 2,000 years after" | Still frame sinking to black. | **Music cut to silence.** |
-| 00:34 ‖ 3.6 s | Title | STRANGEST PAINTING OF JESUS (Cinzel, tracked, small rule). | A single soft timpani D and a Dm(add9) string bloom. |
+| 00:31 | "born almost 2,000 years after" | Still frame, held dark. | **Music cut to silence.** |
+| 00:34 ‖ 3.6 s | Title | STRANGEST PAINTING OF JESUS (Cinzel, tracked, small rule), over the held, darkened family frame. | A single soft timpani D and a Dm(add9) string bloom. |
 | 00:37 | Questions | Sunset sky above Christ's head, then the whole painting held still. | Sparse piano "gaze motif" (D–C–A–F). |
 | 00:46 | What we see | Eased push to the table, then each face framed on its line. | — |
 | 01:22 | Title card | Whole painting. Lower third with title, artist and dates. | String lift. |
@@ -60,10 +65,10 @@ Times are film time (mm:ss). A ‖ marks a pause I inserted into an existing sil
 | 05:19 | Faith | Church light ("The 1890s"), then the wife's face in warm grade, then votive candles. Move from the family back to Christ. | Choir "oohs", warm strings. Cello melody. |
 | 06:09 | "you're standing alongside them" | Gallery plate: the painting on a wall, dolly in. Then family, then face. | Museum room tone. Piano motif. |
 | 06:33 | Fame | Salon-style hall, then the gallery with a Frick lower third. The painting in a warm grade. "Institut de France · 1900" on the artist's face. | 3/4 at 84 bpm: harp, strings, flute, then horn. Cadence on "Institut". |
-| 07:05 ‖ 1.0 s | Forgotten | The artist's face slowly loses exposure and saturation. A dim gallery. "1929". | Layers fall away: cello out, then strings out, then a lone piano. |
+| 07:05 ‖ 1.0 s | Forgotten | The artist's face slowly darkens and loses saturation (never to black). A dim gallery. "1929". | Layers fall away: cello out, then strings out, then a lone piano. |
 | 07:56 | Carnegie | Gallery plate, place card. | Quiet room. |
 | 08:01 | Ending | **Widest view of the film** (pillarboxed with margin). Move to the corner on "those three figures". Slow return to his eyes on "Jesus continues to stare". Tilt down to the empty foreground on "left a place for us". | **Reprise of the gaze motif in D major**, strings and choir. |
-| 08:34 ‖ 1.6 s | Final question | Long push back to his face, then held about 17 s. No graphic, no subscribe animation. | Motif once more after the last word. Harp D-major chord. 6 s fade to black. |
+| 08:34 ‖ 1.6 s | Final question | Long push back to his face, then held about 17 s. No graphic, no subscribe animation. | Motif once more after the last word. Harp D-major chord. The film ends on his face, with no fade-out. |
 
 ---
 
@@ -96,15 +101,15 @@ Original score, sequenced in code from FluidR3 GM samples (MIT-licensed, via `gl
 
 | Shot | Time | Needed | Suggested source |
 |---|---|---|---|
-| 50 | 04:16–04:22 | Photograph or self-portrait of Dagnan-Bouveret (intercut with the painted self) | Wikimedia Commons (public domain photographs exist), Musée d'Orsay |
-| 54 | 04:35 | The surviving preparatory study of the family, with credit | Check Carnegie Museum of Art records for its current holder |
-| 57, 60 | 05:00, 05:15 | Period photographs of a Paris studio or the artist at work | Gallica (BnF), Paris Musées |
-| 70 | 06:33 | Paris Salon or exhibition hall, 1890s | Gallica, Library of Congress |
-| 71 | 06:38 | Henry Clay Frick portrait (public domain photographs exist) | Frick Pittsburgh, Library of Congress |
-| 73 | 07:02 | Institut de France / Académie des Beaux-Arts imagery | Wikimedia Commons |
-| 75 | 07:17 | Early-modern works, properly licensed (Picasso is in copyright) | Licensed stock, or use a public-domain movement instead |
-| 79 | 07:57 | Real Carnegie gallery view | Request from the museum's press office |
-| 20–24 | 01:40–02:20 | Filmed or AI recreation of the road, stranger and dinner | Keep figures distant and unhaloed, as briefed |
+| 48 | 04:16–04:22 | Photograph or self-portrait of Dagnan-Bouveret (intercut with the painted self) | Wikimedia Commons (public domain photographs exist), Musée d'Orsay |
+| 52 | 04:35 | The surviving preparatory study of the family, with credit | Check Carnegie Museum of Art records for its current holder |
+| 55, 58 | 05:00, 05:15 | Period photographs of a Paris studio or the artist at work | Gallica (BnF), Paris Musées |
+| 68 | 06:33 | Paris Salon or exhibition hall, 1890s | Gallica, Library of Congress |
+| 69 | 06:38 | Henry Clay Frick portrait (public domain photographs exist) | Frick Pittsburgh, Library of Congress |
+| 71 | 07:02 | Institut de France / Académie des Beaux-Arts imagery | Wikimedia Commons |
+| 73 | 07:17 | Early-modern works, properly licensed (Picasso is in copyright) | Licensed stock, or use a public-domain movement instead |
+| 77 | 07:57 | Real Carnegie gallery view | Request from the museum's press office |
+| 18–22 | 01:40–02:20 | Filmed or AI recreation of the road, stranger and dinner | Keep figures distant and unhaloed, as briefed |
 
 Every plate is one entry in `SHOTS` in `src/film.py`. To swap one, add a shot kind that loads a still or video and keep the same in and out times. The audio does not change.
 
