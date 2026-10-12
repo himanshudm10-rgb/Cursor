@@ -35,7 +35,7 @@ def sample(inst, midi):
         x = np.interp(idx, np.arange(len(x)), x).astype(np.float32)
     return x / (np.max(np.abs(x)) + 1e-9)
 
-SUSTAIN = {"string_ensemble_1", "cello", "contrabass", "choir_aahs", "voice_oohs", "synth_strings_1",
+SUSTAIN = {"string_ensemble_1", "string_ensemble_2", "tremolo_strings", "trombone", "tuba", "brass_section", "synth_choir", "cello", "contrabass", "choir_aahs", "voice_oohs", "synth_strings_1",
            "pad_2_warm", "oboe", "french_horn", "flute"}
 
 def sustained(x, n):
@@ -93,7 +93,7 @@ class Track:
 def G(n): return n2g(n)
 
 def build():
-    S = {k: Track() for k in ["low", "strings", "choir", "piano", "guitar", "wind", "brass", "harp", "perc"]}
+    S = {k: Track() for k in ["low", "strings", "choir", "piano", "guitar", "wind", "brass", "harp", "perc", "epic", "drums", "ost", "trem"]}
     lo, st, ch, pi, gu, ww, br, hp, pc = (S[k] for k in ["low", "strings", "choir", "piano", "guitar", "wind", "brass", "harp", "perc"])
 
     # ---------- CUE 1: opening mystery (n 0 -> 27.3), music cut at "born almost" ----------
@@ -279,7 +279,94 @@ def build():
             pi.note("acoustic_grand_piano", nn, tm + j * 1.15, 2.0, 0.20 - 0.015 * j, rel=3, pan=0.1)
         pi.note("acoustic_grand_piano", "D3", tm, 4, 0.12, rel=3)
     hp.chord("orchestral_harp", ["D4", "Fs4", "A4", "D5", "Fs5"], G(517.6) + 4.8, 3, 0.25, rel=5, spread=0.7)
+    epic_layer(S)
     return S
+
+def epic_layer(S):
+    """Epic-mystery layer: braams, taiko heartbeat, string ostinato, tremolo, choir, brass climaxes."""
+    ep, dr, os_, tr, ch, br = S["epic"], S["drums"], S["ost"], S["trem"], S["choir"], S["brass"]
+    tt = G(30.48) - INS[0][1]
+    def braam(t, notes, dur, v=0.5, atk=0.25, rel=3.0):
+        ep.chord("brass_section", notes, t, dur, v, atk=atk, rel=rel, spread=0.3)
+        ep.chord("trombone", notes[:2], t, dur, v * 0.8, atk=atk, rel=rel)
+        ep.note("tuba", notes[0], t, dur, v * 0.9, atk=atk, rel=rel)
+        ep.note("contrabass", notes[0], t, dur, v * 0.6, atk=atk * 0.5, rel=rel)
+    def hit(t, v=0.6, note="D2"):
+        dr.note("taiko_drum", note, t, 1.5, v, rel=2.0)
+        dr.note("timpani", note, t, 1.5, v * 0.6, rel=2.5)
+    def heartbeat(t0, t1, bpm, v0, v1):
+        t = t0; b = 60 / bpm
+        while t < t1:
+            k = (t - t0) / max(1e-3, t1 - t0); v = v0 + (v1 - v0) * k
+            dr.note("taiko_drum", "C2", t, 0.6, v, rel=1.2); dr.note("taiko_drum", "C2", t + b * 0.28, 0.5, v * 0.6, rel=1.0)
+            t += b
+    def ostinato(t0, t1, notes, bpm, v, inst="pizzicato_strings"):
+        t = t0; b = 60 / bpm / 2; i = 0
+        while t < t1:
+            fade = min(1, (t - t0) / 3, (t1 - t) / 3)
+            os_.note(inst, notes[i % len(notes)], t, b * 0.9, v * fade, rel=0.5, pan=0.2 * ((i % 2) * 2 - 1))
+            t += b; i += 1
+    def trem(t0, t1, notes, v, atk=3, rel=2):
+        tr.chord("tremolo_strings", notes, t0, t1 - t0, v, atk=atk, rel=rel, spread=0.6)
+    # ---- opening: tremolo veil, heartbeat, braam at "hidden in the corner", rise into the cut
+    cut1 = G(27.25)
+    trem(G(7.0), cut1 - 0.3, ["A4", "Bb4", "D5"], 0.16, atk=5, rel=0.3)
+    heartbeat(G(12.7), cut1 - 0.4, 62, 0.18, 0.42)
+    braam(G(19.70), ["D2", "A2", "Eb3"], 4.0, 0.42, atk=0.4)
+    ch.chord("synth_choir", ["D4", "F4", "A4", "Eb5"], G(22.0), cut1 - G(22.0) - 0.2, 0.22, atk=4, rel=0.3)
+    # ---- title: the big statement
+    braam(tt - 0.15, ["D1", "D2", "A2", "D3", "F3"], 6.5, 0.7, atk=0.08, rel=4.0)
+    hit(tt - 0.15, 0.85); hit(tt + 1.85, 0.4, "A1")
+    ch.chord("choir_aahs", ["D4", "F4", "A4", "D5"], tt + 0.1, 7.0, 0.38, atk=1.0, rel=4)
+    # ---- investigation: pizzicato ostinato and tremolo
+    ostinato(G(36.0), G(88.0), ["D3", "A2", "F3", "A2", "D3", "A2", "E3", "A2"], 72, 0.20)
+    trem(G(66.4), G(75.1), ["F4", "A4", "C5"], 0.13)
+    braam(G(75.13), ["D2", "A2", "F3"], 3.5, 0.32, atk=0.6)
+    # ---- the road: time passing, gentle drum on downbeats from the Scriptures onward
+    t = G(114.4); b = 60 / 72 * 4
+    while t < G(130.0): dr.note("taiko_drum", "C2", t, 0.8, 0.22, rel=1.5); t += b
+    ch.chord("synth_choir", ["D4", "A4"], G(118.5), G(130.3) - G(118.5), 0.14, atk=4, rel=2)
+    # ---- recognition: full climax, then cut to the single choir thread
+    cutD = G(149.62)
+    trem(G(130.5), G(137.1), ["A4", "D5"], 0.12, atk=3, rel=0.4)
+    for n0 in (137.22, 140.02, 142.6, 145.0, 147.2): hit(G(n0), 0.75 if n0 == 140.02 else 0.5)
+    braam(G(140.02), ["D1", "D2", "A2", "D3", "Fs3"], cutD - G(140.02), 0.62, atk=0.15, rel=0.25)
+    br.chord("brass_section", ["Bb2", "F3", "D4"], G(142.6), cutD - G(142.6), 0.4, atk=0.6, rel=0.25)
+    ch.chord("synth_choir", ["D4", "Fs4", "A4", "D5"], G(140.02), cutD - G(140.02), 0.32, atk=0.8, rel=0.25)
+    trem(G(144.0), cutD, ["A5", "D6"], 0.18, atk=2, rel=0.2)
+    # ---- reading the painting: ostinato pulse, braam at "That's the moment", swell on the glow
+    ostinato(G(151.6), G(221.2), ["D3", "F3", "A2", "F3", "E3", "A2", "D3", "A2"], 70, 0.17)
+    braam(G(165.75), ["D2", "A2", "D3"], 4.0, 0.36, atk=0.5)
+    trem(G(186.2), G(197.5), ["C5", "D5"], 0.12)
+    ch.chord("synth_choir", ["F4", "A4", "C5", "F5"], G(198.4), 15, 0.22, atk=3, rel=3)
+    braam(G(207.9), ["F2", "C3", "F3", "A3"], 5.0, 0.32, atk=1.0)
+    # ---- the family: heartbeat accelerates, tremolo climbs, the reveal lands
+    heartbeat(G(221.6), G(240.1), 66, 0.22, 0.6)
+    trem(G(221.6), G(240.2), ["D5", "Eb5"], 0.16, atk=6, rel=0.3)
+    ch.chord("synth_choir", ["D4", "Eb4", "A4"], G(229.0), G(240.2) - G(229.0), 0.2, atk=3, rel=0.3)
+    braam(G(242.15), ["D1", "D2", "A2", "D3", "F3"], 7.0, 0.65, atk=0.08, rel=4)
+    hit(G(242.15), 0.85)
+    ch.chord("choir_aahs", ["D4", "A4", "D5"], G(242.4), 9, 0.3, atk=1.5, rel=3)
+    braam(G(269.2), ["F1", "F2", "C3", "F3", "A3"], 9.0, 0.45, atk=1.6, rel=4)
+    hit(G(269.2), 0.5, "F2")
+    ch.chord("synth_choir", ["F4", "A4", "C5", "F5"], G(269.2), G(285.0) - G(269.2), 0.3, atk=2.5, rel=3)
+    # ---- the artist and his faith: soft choir glow
+    ch.chord("synth_choir", ["Bb3", "F4", "D5"], G(313.6), G(352.0) - G(313.6), 0.14, atk=5, rel=4)
+    # ---- fame: brass on the cadence
+    br.chord("brass_section", ["F3", "A3", "C4", "F4"], G(398.4), G(405.6) - G(398.4), 0.28, atk=1.5, rel=1)
+    braam(G(405.6), ["F1", "F2", "C3", "F3", "A3"], 4.2, 0.55, atk=0.2, rel=3); hit(G(405.6), 0.7, "F2")
+    # ---- decline: one low tremolo thread
+    trem(G(419.2), G(446.0), ["A3", "E4"], 0.08, atk=6, rel=4)
+    # ---- ending: epic reprise, quieter under the final question, big final chord
+    ch.chord("synth_choir", ["D4", "Fs4", "A4"], G(463.7), G(477.4) - G(463.7), 0.2, atk=4, rel=2)
+    heartbeat(G(472.8), G(477.4), 60, 0.2, 0.4)
+    braam(G(477.43), ["G1", "G2", "D3", "G3", "B3"], 9.0, 0.42, atk=1.5, rel=3)
+    hit(G(477.43), 0.6, "G1")
+    braam(G(486.7), ["A1", "A2", "E3", "A3", "Cs4"], 4.0, 0.4, atk=1.2, rel=2)
+    braam(G(490.94), ["D1", "D2", "A2", "D3", "Fs3"], 6.0, 0.5, atk=1.0, rel=3); hit(G(490.94), 0.65)
+    trem(G(497.0), G(517.4), ["A4", "D5", "Fs5"], 0.10, atk=5, rel=1)
+    braam(G(517.6), ["D1", "D2", "A2", "D3", "Fs3", "A3"], 10.0, 0.6, atk=1.0, rel=6); hit(G(517.6), 0.7)
+    ch.chord("choir_aahs", ["D4", "Fs4", "A4", "D5"], G(517.8), 11, 0.36, atk=2, rel=6)
 
 def reverb_ir(sec=3.4, seed=1):
     r = np.random.default_rng(seed)
@@ -292,8 +379,10 @@ def reverb_ir(sec=3.4, seed=1):
     return ir / np.sqrt((ir ** 2).sum(0).mean())
 
 def mixdown(S):
-    sends = {"low": 0.35, "strings": 0.55, "choir": 0.65, "piano": 0.45, "guitar": 0.30, "wind": 0.40, "brass": 0.45, "harp": 0.5, "perc": 0.45}
-    gains = {"low": 1.0, "strings": 1.0, "choir": 1.0, "piano": 0.9, "guitar": 0.9, "wind": 0.9, "brass": 0.9, "harp": 0.8, "perc": 0.9}
+    sends = {"low": 0.35, "strings": 0.55, "choir": 0.65, "piano": 0.45, "guitar": 0.30, "wind": 0.40, "brass": 0.45, "harp": 0.5, "perc": 0.45,
+             "epic": 0.5, "drums": 0.35, "ost": 0.3, "trem": 0.5}
+    gains = {"low": 1.0, "strings": 1.0, "choir": 1.0, "piano": 0.9, "guitar": 0.9, "wind": 0.9, "brass": 0.9, "harp": 0.8, "perc": 0.9,
+             "epic": 1.0, "drums": 0.9, "ost": 0.8, "trem": 0.8}
     dry = 0; wet = 0
     for k, tr in S.items():
         a = tr.arr() * gains[k]

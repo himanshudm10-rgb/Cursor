@@ -19,19 +19,23 @@ SURROUND = np.array([0.018, 0.015, 0.014], np.float32)
 
 def view(cx, cy, w, out_w=W, out_h=H, img=None):
     img = painting() if img is None else img
-    vh = w * out_h / out_w
-    if w <= PW: cx = min(max(cx, w / 2), PW - w / 2)       # close views never leave the canvas
-    if vh <= PH and w <= PW: cy = min(max(cy, vh / 2), PH - vh / 2)
+    cx, cy, w = cview(cx, cy, w, out_w, out_h)
     s = out_w / w
     M = np.array([[s, 0, out_w / 2 - cx * s], [0, s, out_h / 2 - cy * s]], np.float32)
     interp = cv2.INTER_AREA if s < 1 else cv2.INTER_CUBIC
     if s < 1:
-        # pre-shrink for clean downsampling
-        f = s * 1.0
-        small = cv2.resize(img, (int(PW * f), int(PH * f)), interpolation=cv2.INTER_AREA)
-        M = np.array([[1, 0, out_w / 2 - cx * f], [0, 1, out_h / 2 - cy * f]], np.float32)
-        return cv2.warpAffine(small, M, (out_w, out_h), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=SURROUND.tolist())
+        # exact (unquantised) scale: anti-alias with a blur matched to the shrink, then one affine warp
+        sig = 0.5 * (1 / s - 1) + 0.25
+        src = cv2.GaussianBlur(img, (0, 0), sig)
+        return cv2.warpAffine(src, M, (out_w, out_h), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=SURROUND.tolist())
     return cv2.warpAffine(img, M, (out_w, out_h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_CONSTANT, borderValue=SURROUND.tolist())
+
+def cview(cx, cy, w, out_w=W, out_h=H):
+    """keep a view inside the canvas; continuous, so interpolated moves never jump"""
+    h = w * out_h / out_w
+    cx = PW / 2 if w / 2 > PW - w / 2 else min(max(cx, w / 2), PW - w / 2)
+    cy = PH / 2 if h / 2 > PH - h / 2 else min(max(cy, h / 2), PH - h / 2)
+    return cx, cy, w
 
 def ease(u):
     u = np.clip(u, 0, 1); return 0.5 - 0.5 * np.cos(np.pi * u)
@@ -50,8 +54,8 @@ FULL = (1000, 685, 2436); WIDE = (1000, 685, 2900)
 FACE = (930, 390, 520); FACE_T = (930, 385, 440)
 JES_M = (930, 470, 1000); JES_W = (930, 560, 1400)
 LEFT = (232, 540, 620); LEFT_T = (228, 505, 470)
-RIGHT = (1350, 605, 620); RIGHT_T = (1362, 575, 440)
-SERV = (440, 320, 620); SERV_T = (432, 280, 470)
+RIGHT = (1310, 590, 620); RIGHT_T = (1300, 545, 440)
+SERV = (390, 300, 620); SERV_T = (360, 240, 470)
 FAM = (1810, 545, 780); FAM_W = (1760, 545, 920)
 MAN = (1792, 250, 430); WOMAN = (1850, 535, 400); BOY = (1918, 572, 400)
 HANDS = (930, 760, 1100); LAND = (640, 320, 520); SKY = (930, 250, 1100)
@@ -69,6 +73,7 @@ def gap_start(n_ins):
 def Pn(n, keys, xf=0.8, **kw):
     """painting shot; keys either a single view or [(u, view), ...]"""
     if not isinstance(keys[0], tuple) or not isinstance(keys[0][1], tuple): keys = [(0, keys), (1, keys)]
+    keys = [(u, cview(*k)) for u, k in keys]
     S(n, "P", xf, keys=keys, **kw)
 
 def J(n, scene, xf=0.8, g=None, **opts):
@@ -84,7 +89,7 @@ J(27.30, "p_born", 0.6)
 Pn(30.48, [(0, (930, 170, 800)), (1, (930, 215, 920))], xf=1.4, expk=[(0, -0.8)], vig=0.45)
 # 2. What is happening in the painting
 J(35.15, "p_read", 1.2, beats=[[0, "all"], [42.31 - 35.15, "jesus"], [43.91 - 35.15, "bread"], [45.27 - 35.15, "men"], [47.03 - 35.15, "woman"]])
-J(48.79, "p_loupe", 0.8, stops=[[0, 228, 505], [3.9, 228, 505], [4.9, 1362, 575], [7.8, 1362, 575], [8.8, 432, 280], [12.5, 432, 280]])
+J(48.79, "p_loupe", 0.8, stops=[[0, 225, 500], [3.9, 225, 500], [4.9, 1293, 540], [7.8, 1293, 540], [8.8, 338, 212], [12.5, 338, 212]])
 J(61.29, "p_compare", 0.8, split=62.57 - 61.29)
 J(66.41, "p_glow", 0.9)
 J(75.13, "p_present", 1.0)

@@ -4,16 +4,15 @@
 const PAINT = {};
 const PW = 2000, PH = 1370;
 const V = {
-  FULL: [1000, 685, 2436], FACE: [930, 390, 520], JES_M: [930, 470, 1000], LEFT_T: [228, 505, 470], RIGHT_T: [1362, 575, 440],
-  SERV_T: [432, 280, 470], FAM: [1810, 545, 780], MAN: [1792, 250, 430], WOMAN: [1850, 535, 400], BOY: [1918, 572, 400],
+  FULL: [1000, 685, 2436], FACE: [930, 390, 520], JES_M: [930, 470, 1000], LEFT_T: [228, 505, 470], RIGHT_T: [1300, 545, 440],
+  SERV_T: [360, 240, 470], FAM: [1810, 545, 780], MAN: [1792, 250, 430], WOMAN: [1850, 535, 400], BOY: [1918, 572, 400],
 };
 const P_ = () => IMG.painting;
 
 // draw the painting region (cx,cy,w) into dest rect, aspect taken from dest
 function pview(ctx, cx, cy, w, dx = 0, dy = 0, dw = W, dh = H, alpha = 1) {
+  [cx, cy, w] = cview([cx, cy, w], dw, dh);
   const h = w * dh / dw;
-  if (w <= PW) cx = Math.min(Math.max(cx, w / 2), PW - w / 2);      // never show past the canvas edge
-  if (w <= PW && h <= PH) cy = Math.min(Math.max(cy, h / 2), PH - h / 2);
   ctx.save(); ctx.globalAlpha = alpha;
   ctx.fillStyle = '#050403'; ctx.fillRect(dx, dy, dw, dh);
   ctx.beginPath(); ctx.rect(dx, dy, dw, dh); ctx.clip();
@@ -22,8 +21,15 @@ function pview(ctx, cx, cy, w, dx = 0, dy = 0, dw = W, dh = H, alpha = 1) {
   ctx.restore();
 }
 // painting point -> screen for a full-frame view
-function p2s(v, px, py) { const s = W / v[2]; return [W / 2 + (px - v[0]) * s, H / 2 + (py - v[1]) * s, s]; }
-function vlerp(a, b, e) { return a.map((x, i) => lerp(x, b[i], e)); }
+// keep a view inside the canvas; continuous in (cx, cy, w) so camera moves never jump
+function cview(v, dw = W, dh = H) {
+  let [cx, cy, w] = v; const h = w * dh / dw;
+  cx = w / 2 > PW - w / 2 ? PW / 2 : Math.min(Math.max(cx, w / 2), PW - w / 2);
+  cy = h / 2 > PH - h / 2 ? PH / 2 : Math.min(Math.max(cy, h / 2), PH - h / 2);
+  return [cx, cy, w];
+}
+function p2s(v, px, py) { v = cview(v); const s = W / v[2]; return [W / 2 + (px - v[0]) * s, H / 2 + (py - v[1]) * s, s]; }
+function vlerp(a, b, e) { a = cview(a); b = cview(b); return a.map((x, i) => lerp(x, b[i], e)); }
 // darkness everywhere except soft spotlights (screen coords)
 function spotlights(ctx, spots, dim, col = [6, 4, 3]) {
   const o = canvas(W, H), x = o.ctx;
@@ -49,11 +55,10 @@ PAINT.p_open = {
   draw(ctx, t, dur) {
     const u = t / dur, v = vlerp([930, 560, 1500], [930, 392, 520], ease(u));
     pview(ctx, ...v);
-    // beam path in painting coords: table/bread -> servant's plate -> his face
-    const path = [[0, [760, 760]], [0.22, [700, 700]], [0.42, [520, 380]], [0.62, [900, 430]], [0.85, [930, 352]], [1, [930, 352]]];
-    const bp = keys(path, u), [sx, sy, s] = p2s(v, bp[0], bp[1]);
-    const r = lerp(260, 520, ease(u)) * (0.95 + 0.05 * Math.sin(t * 1.3));
-    spotlights(ctx, [{ x: sx, y: sy, rx: r, ry: r * 0.9, a: 1 }], lerp(0.62, 0.42, smooth(0.7, 1, u)));
+    // the beam stays on him: wide on the figure, narrowing to his eyes by "staring directly at you"
+    const bp = [930, lerp(470, 350, ease(u))], [sx, sy, s] = p2s(v, bp[0], bp[1]);
+    const r = lerp(560, 300, ease(u)) * s / (W / 1500) * 0.9 * (0.97 + 0.03 * Math.sin(t * 1.3));
+    spotlights(ctx, [{ x: sx, y: sy, rx: r, ry: r * 1.1, a: 1 }], lerp(0.55, 0.45, u));
     motes(ctx, t, 201, 80, [sx - r, sy - r, sx + r, sy + r], { color: [255, 236, 200], alpha: 0.35, size: [0.6, 1.6], speed: 4, mask: (x, y) => clamp(1 - Math.hypot(x - sx, y - sy) / r) });
   },
 };
@@ -101,7 +106,7 @@ PAINT.p_corner = {
     const u = t / dur, v = vlerp([1450, 520, 950], [1800, 520, 720], ease(u));
     ctx.save(); ctx.filter = 'blur(2.2px) brightness(0.55)'; pview(ctx, ...v); ctx.restore();
     desat(ctx, 0.5 * u);
-    const heads = [[1790, 240], [1850, 525], [1918, 565]];
+    const heads = [[1790, 245], [1845, 527], [1921, 563]];
     heads.forEach(([px, py], i) => {
       const [x, y, s] = p2s(v, px, py), k = smooth(0.25 + i * 0.12, 0.45 + i * 0.12, u);
       const pulse = 0.6 + 0.4 * Math.sin(t * 2.2 + i);
@@ -139,7 +144,7 @@ PAINT.p_read = {
     const v = vlerp(V.FULL, [1000, 660, 2250], ease(t / dur));
     pview(ctx, ...v);
     const targets = {
-      all: [], jesus: [[930, 480, 330, 420]], bread: [[640, 760, 170, 110], [1225, 750, 170, 110]], men: [[230, 560, 230, 330], [1350, 600, 230, 300]], woman: [[430, 330, 220, 330]],
+      all: [], jesus: [[930, 470, 250, 330]], bread: [[640, 760, 150, 95], [1225, 750, 150, 95]], men: [[225, 520, 170, 260], [1300, 600, 190, 230]], woman: [[370, 400, 170, 300]],
     };
     let spots = [], dim = 0;
     for (const [t0, name] of this.beats) {
@@ -160,8 +165,8 @@ PAINT.p_loupe = {
     const v = V.FULL;
     pview(ctx, ...v); ctx.fillStyle = 'rgba(8,6,4,0.45)'; ctx.fillRect(0, 0, W, H);
     const kf = this.stops.map(([t0, px, py]) => [t0, [px, py]]);
-    const [px, py] = keys(kf, t), [x, y, s] = p2s(v, px, py);
-    const R = 300, mag = 2.6;
+    const [px, py] = keys(kf, t), [x0, y0, s] = p2s(v, px, py);
+    const R = 300, mag = 2.6, x = clamp(x0, R + 30, W - R - 30), y = clamp(y0, R + 30, H - R - 30);
     ctx.save(); ctx.fillStyle = 'rgba(0,0,0,0.55)'; ctx.filter = 'blur(18px)'; ctx.beginPath(); ctx.arc(x + 16, y + 22, R, 0, TAU); ctx.fill(); ctx.restore();
     ctx.save(); ctx.beginPath(); ctx.arc(x, y, R, 0, TAU); ctx.clip();
     const w2 = (2 * R) / (s * mag);
@@ -178,12 +183,12 @@ PAINT.p_loupe = {
 PAINT.p_compare = {
   setup(dur, o) { this.split = o.split; },
   draw(ctx, t, dur) {
-    const k = easeOut((t - this.split) / 1.0);
+    const k = ease((t - this.split) / 1.3);
     const vJ = vlerp([930, 395, 600], V.FACE, ease(t / dur));
     if (k <= 0) { pview(ctx, ...vJ); return; }
     const half = W / 2;
     pview(ctx, vJ[0], vJ[1], vJ[2] * (1 - 0.5 * k), lerp(0, half, k), 0, lerp(W, half, k), H);
-    pview(ctx, 1362, 560, 300, lerp(-half, 0, k), 0, half, H);
+    pview(ctx, 1295, 540, 300, lerp(-half, 0, k), 0, half, H);
     ctx.fillStyle = 'rgba(214,186,128,0.8)'; ctx.fillRect(lerp(0, half, k) - 1, 0, 2, H);
   },
 };
@@ -229,14 +234,14 @@ PAINT.p_presence = {
   setup(dur, o) { this.beats = o.beats; this.v0 = o.v0; this.v1 = o.v1; },
   draw(ctx, t, dur) {
     const v = vlerp(this.v0, this.v1, ease(t / dur)); pview(ctx, ...v);
-    const heads = { man: [1790, 250], woman: [1850, 530], boy: [1918, 570], all: null };
+    const heads = { man: [1790, 245], woman: [1845, 527], boy: [1921, 563], all: null };
     let spots = []; let dim = 0;
     for (const [t0, who] of this.beats) {
       const k = smooth(t0, t0 + 0.5, t); if (k <= 0) continue;
-      dim = lerp(dim, who === 'all' ? 0.2 : 0.55, k);
-      spots = spots.map(s => ({ ...s, a: s.a * (1 - k * 0.6) }));
+      dim = lerp(dim, who === 'all' ? 0.3 : 0.62, k);
+      spots = spots.map(s => ({ ...s, a: s.a * (1 - k) }));
       const hs = who === 'all' ? [heads.man, heads.woman, heads.boy] : [heads[who]];
-      for (const [px, py] of hs) { const [x, y, s] = p2s(v, px, py); spots.push({ x, y, rx: 150 * s * 1.6, ry: 170 * s * 1.6, a: k }); }
+      for (const [px, py] of hs) { const [x, y, s] = p2s(v, px, py); spots.push({ x, y, rx: 75 * s, ry: 90 * s, a: k }); }
     }
     spotlights(ctx, spots, dim);
   },
@@ -309,7 +314,6 @@ PAINT.p_eras = {
       for (let i = 0; i <= 10; i++) { const x = lerp(lx + pw + 20, rx - 20, i / 10); ctx.beginPath(); ctx.moveTo(x, cy - 8); ctx.lineTo(x, cy + 8); ctx.stroke(); }
       goldText(ctx, 'c. AD 30', lx + pw / 2, cy + ph / 2 + 44, 28, a * (1 - merge));
       goldText(ctx, '1896', rx + pw / 2, cy + ph / 2 + 44, 28, a * (1 - merge));
-      goldText(ctx, '≈ 1,900 years', W / 2, cy - 40, 30, a * (1 - merge));
     }
     ctx.restore();
     if (merge > 0) pview(ctx, ...vlerp([1380, 560, 1700], [1380, 540, 1500], ease((t - this.join) / (dur - this.join))), 0, 0, W, H, merge);
@@ -319,7 +323,7 @@ PAINT.p_eras = {
 // 15. Brushstroke reveal of a face: primed canvas, charcoal lines, then strokes of paint following the forms
 PAINT.p_brush = {
   setup(dur) {
-    const v = this.v = [1360, 560, 340];
+    const v = this.v = [1300, 545, 340];
     const c = canvas(W, H); pview(c.ctx, ...v); const d = c.ctx.getImageData(0, 0, W, H).data;
     const lum = (x, y) => { x = clamp(x | 0, 0, W - 1); y = clamp(y | 0, 0, H - 1); const i = (y * W + x) * 4; return d[i] * 0.3 + d[i + 1] * 0.59 + d[i + 2] * 0.11; };
     const r = RNG(77); this.strokes = [];
@@ -410,12 +414,12 @@ PAINT.p_inner = {
   setup(dur, o) { this.beats = o.beats; },
   draw(ctx, t, dur) {
     const v = vlerp([930, 470, 1200], [930, 470, 1150], ease(t / dur)); pview(ctx, ...v);
-    const T = { face: [[930, 390, 120, 150]], hands: [[640, 765, 140, 90], [1225, 750, 140, 90]], robe: [[930, 640, 330, 260]], all: [[930, 560, 500, 520]] };
+    const T = { face: [[930, 352, 100, 125]], hands: [[640, 765, 130, 85], [1225, 750, 130, 85]], robe: [[930, 600, 260, 220]], all: [[930, 520, 420, 460]] };
     let spots = [], dim = 0;
     for (const [t0, k_] of this.beats) {
       const k = smooth(t0, t0 + 0.6, t); if (k <= 0) continue;
-      dim = lerp(dim, k_ === 'all' ? 0.25 : 0.5, k); spots = spots.map(s => ({ ...s, a: s.a * (1 - k * 0.5) }));
-      for (const [px, py, rx, ry] of T[k_]) { const [x, y, s] = p2s(v, px, py); spots.push({ x, y, rx: rx * s * 1.7, ry: ry * s * 1.7, a: k }); }
+      dim = lerp(dim, k_ === 'all' ? 0.3 : 0.6, k); spots = spots.map(s => ({ ...s, a: s.a * (1 - k) }));
+      for (const [px, py, rx, ry] of T[k_]) { const [x, y, s] = p2s(v, px, py); spots.push({ x, y, rx: rx * s * 1.15, ry: ry * s * 1.15, a: k }); }
     }
     spotlights(ctx, spots, dim);
   },

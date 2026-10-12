@@ -177,7 +177,7 @@ def music_automation(n):
     t = np.arange(n) / SR
     return 10 ** (np.interp(t, [p[0] for p in pts], [p[1] for p in pts]) / 20)
 
-def duck(voice, n, depth_db=-9.0):
+def duck(voice, n, depth_db=-6.0):
     w = int(0.05 * SR)
     p = np.convolve(voice ** 2, np.ones(w) / w, "same")
     lvl = 10 * np.log10(p + 1e-12)
@@ -202,8 +202,18 @@ if __name__ == "__main__":
     voice *= 0.12 / np.sqrt(np.mean(act ** 2))
     mus = np.load("music.npy")[:N]
     mus = np.pad(mus, ((0, N - len(mus)), (0, 0)))
+    # music levelling: bring quiet cues up and tame the peaks so the score carries emotion throughout
+    from scipy.ndimage import uniform_filter1d
+    mono = mus.mean(1)
+    env = np.sqrt(uniform_filter1d(mono ** 2, int(0.4 * SR)) + 1e-10)
+    env_db = 20 * np.log10(env)
+    target = -22.0
+    gdb = np.clip((target - env_db) * 0.6, -8, 12)
+    gdb[env_db < -60] = 0          # leave true silences silent
+    gdb = uniform_filter1d(gdb, int(1.2 * SR))
+    mus = mus * (10 ** (gdb / 20))[:, None]
     auto = music_automation(N) * duck(voice, N)
-    mus = mus * auto[:, None] * 0.48
+    mus = mus * auto[:, None] * 1.40
     fx = build()
     v2 = np.stack([voice, voice], 1)
     mix = v2 + mus + fx * 0.75

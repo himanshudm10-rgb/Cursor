@@ -10,6 +10,31 @@ The full shot list, with timecodes, view coordinates and dissolve lengths, is in
 
 ---
 
+## Revision 4: QC fixes and a bigger score
+
+- **Highlights on target.** Every spotlight, ring and loupe was re-measured against the painting.
+  - The right disciple's and the servant's targets had been off their faces, and Jesus's face target was too low.
+  - Spotlights were resized to one head or hand. The previous highlight now fades out fully, so each one reads clearly.
+  - The loupe stays fully on screen.
+  - The opening searchlight stays on Jesus and narrows to his eyes rather than wandering.
+- **Jitter fixed.** Frame-to-frame motion was measured across the whole film with phase correlation (`src/jitter.py`). Three causes were fixed:
+  - Edge clamping of camera moves kicked in abruptly. It caused one-frame jumps of up to 84 px at 8:07 and kinks at 8:12 and 8:32. Clamping is now continuous and applied to keyframes, never mid-move.
+  - Zoom-outs used a whole-pixel resize that shimmered. They now use an exact transform.
+  - The comparison slide started at full speed. It now eases in.
+  - Worst remaining frame-to-frame jerk: about 5 px, down from 84 px.
+- **Content.** Every section was re-checked against the narration. The "≈ 1,900 years" label was removed, because it contradicted the narrator's "nearly two thousand years".
+- **Music.** The score is more epic and mysterious. Sound effects are unchanged.
+  - New elements:
+    - low brass "braams" (brass section, trombone, tuba) on the key reveals;
+    - a taiko heartbeat building suspense;
+    - pizzicato ostinatos under the investigation;
+    - tremolo strings and synth choir;
+    - a full brass, choir and taiko climax on "It was Jesus";
+    - a big choral reprise at the end.
+  - A levelling stage on the music bus lifts quiet cues.
+  - Ducking under the voice is now 6 dB, down from 9.
+  - Result: music sits about 10.5 dB under the narration during speech and about 7.5 dB under between lines. The master is −14 LUFS.
+
 ## Revision 3: JavaScript visual engine
 
 Most of the film's visuals are now rendered by a JavaScript engine running in headless Chromium (`js/`), then graded, grained and subtitled by `src/film.py`.
