@@ -10,6 +10,35 @@ The full shot list, with timecodes, view coordinates and dissolve lengths, is in
 
 ---
 
+## Revision 3: JavaScript visual engine
+
+Most of the film's visuals are now rendered by a JavaScript engine running in headless Chromium (`js/`), then graded, grained and subtitled by `src/film.py`.
+
+- **Emmaus reconstruction (3D):** a WebGL raymarched landscape (`js/gl.js`). It has eroded limestone hills with terraces, a valley road, olive groves as 3D trees, soft sun shadows, haze and clouds.
+  - Each view is rendered once as a colour plate plus a depth map. Camera moves use depth parallax from that map.
+  - Articulated walking figures are composited on top (`js/figure.js`). They have tunics, mantles, head-cloths, sashes, staffs, a walk cycle, rim light and dust at each footfall. Faces are never detailed.
+  - Everything passes through an oil-paint (Kuwahara) filter with a canvas weave, so the recreations read as moving paintings rather than CG.
+  - The shots: wide valley; side-tracking pair with heads bowed; the stranger joining from a side path; side-tracking three; a time-lapse from afternoon to dusk; Emmaus at dusk with lit windows; the lamplit room where three seated shadows become two.
+- **Painting treatments (`js/paint.js`):** these change only light, framing and layout, never the artwork itself.
+  - A searchlight exploring the darkened canvas.
+  - A ghost echo of the face.
+  - A triptych of reactions.
+  - Three presences pulsing in the corner, and a timeline from c. AD 30 to the 1890s.
+  - Element-by-element spotlighting, and a magnifier loupe on each face.
+  - A sharp-versus-soft face comparison, rays behind Christ, and the painting presented as a framed object.
+  - The family faces lifting out as cards and returning.
+  - Two eras pulled apart across a timeline and merged back.
+  - A brushstroke reveal, light motes travelling from Christ to the family, a gilded sheen, and dust settling over the forgotten artist.
+- **Cutaways (`js/broll.js`):**
+  - A north-light Paris studio with the painting half-finished on the easel and a bellows camera.
+  - A Gothic church with stained glass casting coloured light, and votive candles with rack focus.
+  - A museum with a visitor before the painting.
+  - The skylit Salon with an 1890s crowd.
+  - Industrial Pittsburgh with furnaces and smokestacks, and Frick's panelled collection room.
+  - The Institut de France dome over the Seine.
+  - An early-modern room with original abstract shapes. These are not copies of any real artwork.
+- Narration, music, mix and subtitles are unchanged from revision 2.
+
 ## Revision 2
 
 - **No fades.** There is no fade-in, no fade-out and no dip to black anywhere. The painting is on screen from frame 1, and the film ends on Jesus's face. Dissolves between shots remain.

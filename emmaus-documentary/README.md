@@ -13,6 +13,7 @@ A cinematic documentary cut of Pascal Dagnan-Bouveret's *Christ and the Disciple
   - `master.sh`: −14 LUFS master.
   - `plates.py`: procedural recreation plates.
   - `film.py`: the edit itself (`SHOTS`, `TEXT`), grade and renderer.
+- `js/`: the JavaScript visual engine (WebGL landscape, figures, painting treatments, cutaways). `src/run_js.py` captures every JS shot listed by `python3 src/film.py jobs js_jobs.json`.
 - `fonts/`: Cinzel, Cormorant Garamond and EB Garamond (SIL Open Font License, from google/fonts).
 
 The rendered video is not in the repo, because it is too large for git.

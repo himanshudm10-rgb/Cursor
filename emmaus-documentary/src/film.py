@@ -71,91 +71,86 @@ def Pn(n, keys, xf=0.8, **kw):
     if not isinstance(keys[0], tuple) or not isinstance(keys[0][1], tuple): keys = [(0, keys), (1, keys)]
     S(n, "P", xf, keys=keys, **kw)
 
+def J(n, scene, xf=0.8, g=None, **opts):
+    """shot rendered by the JS engine (headless Chromium) into js_frames/<id>/"""
+    S(n, "seq", xf, g=g, scene=scene, opts=opts)
+
 # 1. Opening
-Pn(-3.5, [(0, (930, 560, 1500)), (1, (930, 392, 520))], xf=0, g=0.0, expk=[(0, -0.55)], vig=0.55)
-Pn(12.70, [(0, (930, 392, 520)), (1, (930, 388, 470))], xf=0, expk=[(0, -0.55), (1, -0.35)], bloomk=[(0, 0.1), (1, 0.75)], vig=0.5)
-Pn(16.62, LEFT_T, xf=0.35, expk=[(0, -0.6)], vig=0.5)
-Pn(17.85, RIGHT_T, xf=0.35, expk=[(0, -0.6)], vig=0.5)
-Pn(18.85, SERV_T, xf=0.35, expk=[(0, -0.6)], vig=0.5)
-Pn(19.70, [(0, (1450, 520, 950)), (1, (1800, 520, 720))], xf=0.7, expk=[(0, -1.1), (1, -1.3)], blur=2.2, vig=0.6)
-Pn(27.30, (1790, 525, 760), xf=0, expk=[(0, -1.3), (1, -1.9)], blur=2.2, vig=0.6)
+J(-3.5, "p_open", 0, g=0.0)
+J(12.70, "p_ghost", 0)
+J(16.62, "p_triptych", 0.35)
+J(19.70, "p_corner", 0.7)
+J(27.30, "p_born", 0.6)
 Pn(30.48, [(0, (930, 170, 800)), (1, (930, 215, 920))], xf=1.4, expk=[(0, -0.8)], vig=0.45)
-Pn(35.15, FULL, xf=1.2)
-Pn(39.35, [(0, FULL), (1, (950, 640, 1520))], xf=0)
 # 2. What is happening in the painting
-Pn(48.79, [(0, LEFT), (1, LEFT_T)], xf=0.8)
-Pn(53.45, [(0, RIGHT), (1, RIGHT_T)], xf=0.8)
-Pn(57.37, [(0, SERV), (1, SERV_T)], xf=0.8)
-Pn(61.29, [(0, (930, 395, 600)), (1, FACE)], xf=0.8, bloomk=[(0, 0.2), (1, 0.35)])
-Pn(66.41, [(0, JES_M), (1, (930, 450, 1180))], xf=0.9, bloomk=[(0, 0.35), (1, 0.7)])
-Pn(75.13, [(0, FULL), (1, (1000, 660, 2200))], xf=1.2)
-# 3. The road to Emmaus (reconstruction)
+J(35.15, "p_read", 1.2, beats=[[0, "all"], [42.31 - 35.15, "jesus"], [43.91 - 35.15, "bread"], [45.27 - 35.15, "men"], [47.03 - 35.15, "woman"]])
+J(48.79, "p_loupe", 0.8, stops=[[0, 228, 505], [3.9, 228, 505], [4.9, 1362, 575], [7.8, 1362, 575], [8.8, 432, 280], [12.5, 432, 280]])
+J(61.29, "p_compare", 0.8, split=62.57 - 61.29)
+J(66.41, "p_glow", 0.9)
+J(75.13, "p_present", 1.0)
+# 3. The road to Emmaus (painted 3D reconstruction)
 Pn(88.41, [(0, (1180, 330, 760)), (1, (1235, 305, 340))], xf=1.0, warm=0.08)
-S(92.46, "road", 1.8, plate=dict(kind="afternoon", walkers=2, s_range=(0.22, 0.32)))
-S(102.78, "road", 1.2, plate=dict(kind="late", walkers=2, s_range=(0.20, 0.28), stranger="join"))
-S(114.41, "road", 1.4, plate=dict(kind="dusk", walkers=2, s_range=(0.12, 0.22), stranger="with", houses=True, z=(1.04, 1.10), dx=-0.02))
-S(124.18, "village", 1.4)
-S(130.50, "table", 1.2, plate=dict(lit=True))
+J(92.46, "road_wide", 1.8)
+J(97.10, "track_two", 1.0)
+J(102.78, "road_join", 1.0)
+J(107.69, "track_three", 1.0)
+J(114.41, "timelapse", 1.2)
+J(124.18, "village", 1.2)
+J(130.50, "interior_lit", 1.2)
 Pn(132.90, [(0, HANDS), (1, (930, 760, 780))], xf=1.0, warm=0.05)
 Pn(137.22, [(0, RIGHT_T), (1, (1364, 572, 400))], xf=0.4)
 Pn(138.60, [(0, LEFT_T), (1, (228, 505, 430))], xf=0.4)
 Pn(140.02, [(0, (930, 400, 700)), (1, (930, 390, 480))], xf=0.5, bloomk=[(0, 0.3), (1, 0.6)])
 Pn(146.10, [(0, (930, 390, 480)), (1, (930, 388, 440))], xf=0, bloomk=[(0, 0.6), (0.6, 1.4), (1, 3.2)], expk=[(0, 0), (0.6, 0.4), (1, 1.6)])
-S(149.67, "table", 1.0, plate=dict(lit=False, z=(1.0, 1.06)))
+J(149.67, "interior_empty", 1.0)
 Pn(158.32, [(0, JES_M), (1, (930, 455, 880))], xf=1.0, expk=[(0, -0.3)])
-S(164.56, "road", 0.8, plate=dict(kind="dusk", walkers=0, z=(1.02, 1.05)), expk=[(0, -0.6)])
+J(164.56, "road_empty", 0.8)
 # 4. Reading the painting
-S(165.45, "table", 1.0, plate=dict(lit=True, z=(1.0, 1.03)))
+J(165.45, "interior_lit", 1.0)
 Pn(168.20, [(0, FULL), (1, (1000, 670, 2250))], xf=2.0)
 Pn(172.85, LEFT_T, xf=0.8)
 Pn(175.70, RIGHT_T, xf=0.8)
 Pn(178.61, [(0, SERV), (1, SERV_T)], xf=0.8)
 Pn(183.81, (930, 500, 1100), xf=0.8)
 Pn(186.20, [(0, (930, 500, 1100)), (1, SKY)], xf=0)
-S(189.96, "backlit", 1.0)
-Pn(197.56, [(0, (930, 395, 560)), (0.25, (930, 395, 560)), (1, (930, 520, 1300))], xf=1.0, bloomk=[(0, 0.3), (1, 0.5)])
-Pn(207.91, [(0, (930, 480, 1050)), (1, (930, 400, 600))], xf=0.8, bloomk=[(0, 0.45), (1, 0.9)])
+J(189.96, "backlit", 1.0)
+J(197.56, "p_inner", 1.0, beats=[[0.6, "all"], [200.23 - 197.56, "face"], [201.43 - 197.56, "hands"], [202.95 - 197.56, "robe"], [205.0 - 197.56, "all"]])
+J(207.91, "p_source", 0.8)
 Pn(214.35, JES_W, xf=1.0, bloomk=[(0, 0.5)])
 # 5. The hidden family
 Pn(221.51, [(0, (930, 500, 1300)), (1, (1780, 540, 820))], xf=0.6, g=gap_start(221.51) + 0.0)
-Pn(229.04, [(0, (1792, 270, 520)), (1, MAN)], xf=0.6)
-Pn(231.60, WOMAN, xf=0.4)
-Pn(232.62, BOY, xf=0.4)
-Pn(233.50, FAM, xf=0.6)
+J(229.04, "p_presence", 0.6, v0=[1792, 330, 900], v1=[1810, 545, 780], beats=[[231.04 - 229.04, "man"], [231.68 - 229.04, "woman"], [232.64 - 229.04, "boy"], [233.6 - 229.04, "all"]])
 Pn(240.24, FAM, xf=0, expk=[(0, 0), (1, -0.35)])
-Pn(241.62, MAN, xf=0.6, g=G(241.62) - 0.25)
-Pn(247.06, WOMAN, xf=0.6)
-Pn(249.70, BOY, xf=0.6)
-Pn(252.26, [(0, FAM), (1, FULL)], xf=0.8)
+J(241.62, "p_cards", 0.6, g=G(241.62) - 0.25, beats=[[0.25, "man"], [round(G(247.06) - G(241.62) + 0.25, 3), "woman"], [round(G(249.70) - G(241.62) + 0.25, 3), "boy"]])
+J(252.26, "p_return", 0.4)
 Pn(260.11, FAM_W, xf=1.0)
-S(263.87, "diptych", 1.0, a=[(0, (930, 410, 560)), (1, (930, 400, 500))], b=[(0, (1830, 450, 600)), (1, (1830, 440, 540))])
-Pn(271.70, [(0, (1450, 560, 1500)), (1, (1380, 540, 1300))], xf=1.2, bloomk=[(0, 0.3)])
+J(263.87, "p_eras", 1.0, join=271.70 - 263.87)
 # 6. The artist
-S(285.13, "studio", 1.4, g=gap_start(285.13))
-Pn(291.61, [(0, (1360, 560, 330)), (1, (1350, 575, 380))], xf=1.0)
-Pn(295.40, [(0, (640, 760, 420)), (1, (650, 762, 470))], xf=0.8)
-S(298.30, "studio", 1.0, plate=dict(z=(1.25, 1.32), cx=0.62))
-S(303.03, "church", 1.4)
+J(285.13, "studio", 1.4, g=gap_start(285.13))
+J(291.61, "p_brush", 1.0)
+J(298.30, "studio", 1.0, z0=1.55, z1=1.68, cx=0.32, cy=0.58, dx=0)
+J(303.03, "church", 1.4)
 Pn(313.63, [(0, (1850, 535, 520)), (1, WOMAN)], xf=1.2, warm=0.10)
 Pn(320.51, FAM, xf=1.0, warm=0.08)
-S(326.08, "votive", 1.4)
-Pn(338.10, [(0, FAM), (1, (1250, 560, 1500))], xf=1.4, bloomk=[(0, 0.2), (1, 0.4)])
-S(352.20, "gallery", 1.2, plate=dict(mood="museum", z=(1.0, 1.14)))
+J(326.08, "votive", 1.4)
+J(338.10, "p_witness", 1.4)
+J(352.20, "museum", 1.2, visitor=True)
 Pn(360.34, FAM, xf=0.8)
 Pn(364.02, [(0, (930, 390, 640)), (1, FACE)], xf=0.8)
 Pn(369.18, FULL, xf=1.0)
 # 7. Fame
-S(376.46, "gallery", 1.2, plate=dict(mood="salon", z=(1.0, 1.08)))
-S(381.31, "gallery", 1.0, plate=dict(mood="museum", z=(1.18, 1.28)))
-Pn(392.80, [(0, FULL), (1, (980, 640, 1900))], xf=1.0, warm=0.06, bloomk=[(0, 0.2), (1, 0.4)])
-Pn(405.60, MAN, xf=0.8, warm=0.06)
+J(376.46, "salon", 1.2)
+J(381.31, "pittsburgh", 1.0)
+J(386.75, "collection", 1.0)
+J(392.80, "p_gilded", 1.0)
+J(405.60, "institut", 0.8)
 # 8. Forgotten
-Pn(409.14, [(0, MAN), (1, (1792, 255, 470))], xf=0.6, g=gap_start(409.14), expk=[(0, 0), (1, -1.3)], satk=[(0, 1), (1, 0.6)])
-S(419.23, "gallery", 1.4, plate=dict(mood="dim", z=(1.16, 1.0)))
-Pn(433.19, (1792, 255, 520), xf=1.4, expk=[(0, -1.0)], satk=[(0, 0.6)])
+J(409.14, "p_dust", 0.6, g=gap_start(409.14), v0=[1792, 250, 430], v1=[1792, 255, 470], k0=0.0, k1=0.45, d0=0.0, d1=0.5)
+J(419.23, "modern", 1.4)
+J(433.19, "p_dust", 1.4, v0=[1792, 255, 520], v1=[1792, 255, 500], k0=0.45, k1=0.5, d0=0.5, d1=0.55)
 Pn(445.03, [(0, FAM), (1, FAM_W)], xf=1.2, warm=0.05)
-Pn(455.56, MAN, xf=1.0, expk=[(0, -0.3), (1, -1.2)])
-S(459.08, "gallery", 1.0, plate=dict(mood="museum", z=(1.0, 1.06)))
+J(455.56, "p_dust", 1.0, v0=[1792, 250, 430], v1=[1792, 250, 410], k0=0.2, k1=0.7, d0=0.3, d1=0.6)
+J(459.08, "museum", 1.0, z0=1.0, z1=1.06, bench=True)
 # 9. Ending
 Pn(463.69, WIDE, xf=1.6)
 Pn(467.00, [(0, WIDE), (1, (1780, 540, 900))], xf=0)
@@ -170,6 +165,17 @@ for i, s in enumerate(SHOTS):
 SHOTS.sort(key=lambda s: s["g"])
 for i, s in enumerate(SHOTS):
     s["end"] = SHOTS[i + 1]["g"] if i + 1 < len(SHOTS) else TOTAL
+    if s["kind"] == "seq":
+        s["id"] = f"{i:03d}_{s['scene']}"
+        s["handle"] = (SHOTS[i + 1]["xf"] if i + 1 < len(SHOTS) else 0) + 0.25
+
+def js_jobs():
+    out = []
+    for s in SHOTS:
+        if s["kind"] != "seq": continue
+        dur = s["end"] - s["g"]
+        out.append(dict(id=s["id"], scene=s["scene"], dur=round(dur, 3), frames=int(np.ceil((dur + s["handle"]) * FPS)), opts=s["opts"]))
+    return out
 
 # ----------------------------------------------------------------- titles & lower thirds (sparse)
 TEXT = [
@@ -239,6 +245,14 @@ def render_shot(s, g):
     k = s["kind"]
     if k == "black":
         return np.zeros((H, W, 3), np.float32)
+    if k == "seq":
+        d = f"{HERE}/js_frames/{s['id']}"
+        n = s.get("_n")
+        if n is None:
+            n = s["_n"] = len([f for f in os.listdir(d) if f.endswith(".jpg")])
+        i = min(n - 1, max(0, int(round(t * FPS))))
+        im = cv2.imread(f"{d}/{i:05d}.jpg")
+        return cv2.cvtColor(im, cv2.COLOR_BGR2RGB).astype(np.float32) / 255.0
     if k == "P":
         cx, cy, w = interp_keys(s["keys"], u)
         img = view(cx, cy, w)
@@ -265,7 +279,7 @@ def render_shot(s, g):
 
 def grade_params(s, g):
     t = g - s["g"]; dur = s["end"] - s["g"]; u = t / max(dur, 1e-3)
-    return dict(exp=keyval(s.get("expk"), u, 0.0), bloom=keyval(s.get("bloomk"), u, 0.0 if s["kind"] == "P" else (0.08 if s["kind"] in ("gallery", "diptych") else 0.35)),
+    return dict(exp=keyval(s.get("expk"), u, 0.0), bloom=keyval(s.get("bloomk"), u, 0.0 if s["kind"] == "P" else (0.06 if s["kind"] in ("gallery", "diptych", "seq") else 0.35)),
                 sat=keyval(s.get("satk"), u, 1.0), warm=s.get("warm", 0.0), vig=s.get("vig", 0.35), kind=s["kind"])
 
 def apply_shot_grade(img, gp):
@@ -363,5 +377,7 @@ if __name__ == "__main__":
     elif mode == "stills":
         ts = [float(x) for x in sys.argv[3:]]
         stills(ts, sys.argv[2])
+    elif mode == "jobs":
+        json.dump(js_jobs(), open(sys.argv[2], "w"), indent=1); print(len(js_jobs()), "jobs", sum(j["frames"] for j in js_jobs()), "frames")
     elif mode == "edl":
         for s in SHOTS: print(f"{s['g']:7.2f}-{s['end']:7.2f}  {s['kind']:8} n={s['n']}")
