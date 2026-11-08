@@ -2,19 +2,29 @@
 // Medium-small, short phrases, the spoken word lit gold, above the reel UI zone.
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
-import {continueRender, delayRender, staticFile} from 'remotion';
+import {continueRender, delayRender} from 'remotion';
+import {CINZEL_600} from './cinzelFont';
 import raw from './words.json';
 import {clamp} from './lib';
 
-// Cinzel 600 bundled locally (public/cinzel-600.woff2) so renders never depend on the network
+// Cinzel 600 embedded as a data URL; a fallback timer guarantees the frame is never blocked.
 const fontFamily = 'CinzelLocal';
-if (typeof document !== 'undefined') {
-	const h = delayRender('cinzel', {timeoutInMilliseconds: 240000});
-	const ff = new FontFace(fontFamily, `url(${staticFile('cinzel-600.woff2')}) format('woff2')`, {weight: '600'});
-	ff.load().then((f) => {
-		document.fonts.add(f);
-		continueRender(h);
-	});
+if (typeof document !== 'undefined' && !(window as unknown as {__cinzel?: boolean}).__cinzel) {
+	(window as unknown as {__cinzel?: boolean}).__cinzel = true;
+	const h = delayRender('cinzel', {timeoutInMilliseconds: 60000});
+	let done = false;
+	const finish = () => {
+		if (!done) {
+			done = true;
+			continueRender(h);
+		}
+	};
+	const ff = new FontFace(fontFamily, `url(${CINZEL_600}) format('woff2')`, {weight: '600'});
+	ff.load()
+		.then((f) => document.fonts.add(f))
+		.catch(() => undefined)
+		.finally(finish);
+	setTimeout(finish, 8000);
 }
 
 type Word = {s: number; e: number; w: string};
