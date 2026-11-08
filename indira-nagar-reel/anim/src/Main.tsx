@@ -2,7 +2,7 @@ import React from 'react';
 import {AbsoluteFill, Audio, staticFile, useCurrentFrame} from 'remotion';
 import {C, END_SEC, FPS, clamp, flash, ramp, sec} from './lib';
 import {Black, Defs, Finish} from './world';
-import {Captions} from './Captions';
+import {Captions, FontStyle} from './Captions';
 import {Accepts, AdiParva, Brahmastra, Disguise, DronaClose, Journey, Mahendra, Myth, Penance, Record, Refuses, Reserved, Rival, School, Vows} from './scenes/Story';
 
 export const TOTAL_FRAMES = sec(END_SEC);
@@ -99,7 +99,10 @@ export const Main: React.FC = () => {
 	const fl = flash(T, cutFlashes, 10);
 	return (
 		<AbsoluteFill style={{background: '#000'}}>
+			<FontStyle />
 			<Defs />
+			{/* keep the subtitle face warm on every frame */}
+			<div style={{position: 'absolute', opacity: 0, fontFamily: 'CinzelLocal', fontWeight: 600}}>Aa</div>
 			{layers}
 			{fl > 0.01 && <AbsoluteFill style={{background: '#e6eeff', opacity: fl * 0.75, mixBlendMode: 'screen'}} />}
 			<Captions T={T} />

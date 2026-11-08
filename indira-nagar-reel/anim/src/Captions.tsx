@@ -2,30 +2,13 @@
 // Medium-small, short phrases, the spoken word lit gold, above the reel UI zone.
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
-import {continueRender, delayRender} from 'remotion';
 import {CINZEL_600} from './cinzelFont';
 import raw from './words.json';
 import {clamp} from './lib';
 
-// Cinzel 600 embedded as a data URL; a fallback timer guarantees the frame is never blocked.
+// Cinzel 600 embedded as a data URL and declared with plain CSS @font-face (no loader that could stall a render).
 const fontFamily = 'CinzelLocal';
-if (typeof document !== 'undefined' && !(window as unknown as {__cinzel?: boolean}).__cinzel) {
-	(window as unknown as {__cinzel?: boolean}).__cinzel = true;
-	const h = delayRender('cinzel', {timeoutInMilliseconds: 60000});
-	let done = false;
-	const finish = () => {
-		if (!done) {
-			done = true;
-			continueRender(h);
-		}
-	};
-	const ff = new FontFace(fontFamily, `url(${CINZEL_600}) format('woff2')`, {weight: '600'});
-	ff.load()
-		.then((f) => document.fonts.add(f))
-		.catch(() => undefined)
-		.finally(finish);
-	setTimeout(finish, 8000);
-}
+export const FontStyle: React.FC = () => <style>{`@font-face{font-family:'${fontFamily}';font-weight:600;font-display:block;src:url(${CINZEL_600}) format('woff2');}`}</style>;
 
 type Word = {s: number; e: number; w: string};
 const WORDS: Word[] = (raw as [number, number, string][]).map(([s, e, w]) => ({s, e, w: w.trim()}));
