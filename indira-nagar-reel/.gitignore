@@ -1,0 +1,9 @@
+node_modules/
+anim/out/
+# Epidemic Sound assets are licensed to the account; re-download via build steps rather than committing
+music/
+anim/public/music.wav
+anim/public/sfx.wav
+Voiceover_tight.wav
+raw/*.wav
+raw/*.json
