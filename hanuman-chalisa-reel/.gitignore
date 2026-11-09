@@ -1,0 +1,7 @@
+anim/node_modules/
+anim/out/
+anim/public/music.wav
+anim/public/sfx.wav
+# Epidemic Sound assets are licensed to the account holder; download them again via the Epidemic Sound connector
+audio/epidemic/
+tools/**/__pycache__/
