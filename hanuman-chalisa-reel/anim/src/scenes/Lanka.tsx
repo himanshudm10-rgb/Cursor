@@ -67,15 +67,6 @@ export const OceanLeap: React.FC<{t: number}> = ({t}) => {
 						<Flying t={t} />
 					</CharFX>
 				</g>
-				{/* speed streaks of wind */}
-				<g opacity={0.5}>
-					{Array.from({length: 14}, (_, i) => {
-						const r = rng(i + 7);
-						const y = 500 + r() * 900;
-						const x = cx + ((r() * 1600 - t * 1600) % 1600) + 1400;
-						return <path key={i} d={`M${x},${y} l${-260 - r() * 200},0`} stroke="#fff0d0" strokeWidth={2 + r() * 2} opacity={0.5} strokeLinecap="round" />;
-					})}
-				</g>
 			</Layer>
 			<Layer depth={1.6}>
 				<Dust t={t} seed={93} count={50} color="#ffffff" vx={-700} vy={0} size={2.6} opacity={0.5} area={[cx * 1.6 - 300, 0, 1700, 1920]} />

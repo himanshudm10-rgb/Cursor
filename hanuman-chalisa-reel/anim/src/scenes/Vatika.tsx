@@ -5,8 +5,8 @@
 // 37.32 - 39.18 "But before returning, Hanumanji"  He rises, low angle.
 // 39.18 - 41.18 "destroyed Ashok Vatika."  The grove falls; leaves storm.
 import React from 'react';
-import {CharFX, Warrior} from '../characters';
-import {Hanuman, RingHands, Sita} from '../hanuman';
+import {CharFX} from '../characters';
+import {Hanuman, Rakshasa, RingHands, Sita} from '../hanuman';
 import {flash, keys, ramp} from '../lib';
 import {Dust, DustBank, Layer, Scene, Sky} from '../world';
 import {AshokaTree, Leaves} from './sets';
@@ -31,9 +31,11 @@ export const Captive: React.FC<{t: number}> = ({t}) => (
 	<Scene cam={{zoom: keys(t, [[-0.4, 1.0], [2.6, 1.14]]), y: 40}} bg="#0a0d16">
 		<Grove t={t} />
 		<Layer depth={0.6}>
-			{[-80, 120, 900, 1120].map((x, i) => (
-				<g key={x} transform={`translate(${x} 1420) scale(${1.5 + (i % 2) * 0.2})`} fill="#07080b" style={{color: '#07080b'}}>
-					<Warrior t={t} seed={30 + i} facing={x < 540 ? 1 : -1} shield={i % 2 === 0} />
+			{[-40, 170, 900, 1120].map((x, i) => (
+				<g key={x} transform={`translate(${x} 1420) scale(${0.62 + (i % 2) * 0.06})`}>
+					<CharFX dark={0.72} rim="#c8ccd8" rimA={0.8} rimDir={[0.6, -0.8]} rimW={8}>
+						<Rakshasa t={t} seed={30 + i} facing={x < 540 ? 1 : -1} weapon="spear" />
+					</CharFX>
 				</g>
 			))}
 		</Layer>

@@ -47,7 +47,7 @@ export const SHOTS: Shot[] = [
 
 const half = (tr: Trans) => (tr.type === 'cut' || tr.type === 'flash' ? 0 : (tr.d ?? 0) / 2);
 
-export const Main: React.FC = () => {
+export const Main: React.FC<{hf?: boolean}> = ({hf = false}) => {
 	const frame = useCurrentFrame();
 	const T = frame / FPS;
 	const layers: React.ReactNode[] = [];
@@ -116,11 +116,11 @@ export const Main: React.FC = () => {
 			<Defs />
 			{layers}
 			{fl > 0.01 && <AbsoluteFill style={{background: '#e6eeff', opacity: fl * 0.75, mixBlendMode: 'screen'}} />}
-			<Captions T={T} />
+			{!hf && <Captions T={T} />}
 			<Finish frame={frame} />
 			<Black v={T >= BLACK_AT ? 1 : 0} />
 			{/* preview only - final renders are --muted and the voice-first mix is added by finalize.sh */}
-			<Audio src={staticFile('Voiceover.mp3')} />
+			{!hf && <Audio src={staticFile('Voiceover.mp3')} />}
 		</AbsoluteFill>
 	);
 };

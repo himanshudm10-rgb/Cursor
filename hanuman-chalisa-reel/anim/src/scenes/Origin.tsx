@@ -7,7 +7,7 @@ import {Anjani, Hanuman, Ram} from '../hanuman';
 import {keys, ramp} from '../lib';
 import {Clouds, Crag, Dust, Layer, Ridge, Scene, Sky} from '../world';
 import {Grass} from './Protector';
-import {Leaves, WindStreams} from './sets';
+import {Leaves} from './sets';
 
 export const AnjaniVayu: React.FC<{t: number}> = ({t}) => (
 	<Scene cam={{zoom: keys(t, [[-0.3, 1.0], [2.2, 1.12]]), rot: keys(t, [[-0.3, -1.5], [2.2, 1.5]]), y: 20}} bg="#2a2a3a">
@@ -20,7 +20,6 @@ export const AnjaniVayu: React.FC<{t: number}> = ({t}) => (
 		</Layer>
 		<Layer depth={0.5}>
 			<Ridge seed={43} base={1480} amp={220} freq={0.004} fill="#3a3040" fill2="#4a3a40" />
-			<WindStreams t={t} cx={540} cy={820} n={8} radius={420} color="#fbe6b8" opacity={0.7} />
 		</Layer>
 		<Layer depth={1}>
 			<Crag x={540} y={1300} w={460} h={160} fill="#2a2228" rim="#f4cf8e" seed={8} />
@@ -30,7 +29,6 @@ export const AnjaniVayu: React.FC<{t: number}> = ({t}) => (
 					<Anjani t={t} pray={1} wind={1.2} />
 				</CharFX>
 			</g>
-			<WindStreams t={t + 2} cx={540} cy={1060} n={5} radius={300} color="#fff0cc" opacity={0.55} />
 		</Layer>
 		<Layer depth={1.4}>
 			<Leaves t={t} seed={4} count={36} vx={420} vy={-60} color="#6a7446" color2="#d8a050" size={1.2} />

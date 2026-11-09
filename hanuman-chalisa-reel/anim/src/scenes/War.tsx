@@ -4,7 +4,7 @@
 // 51.98 - 55.04 "The son of Vayudev had shaken Ravan's kingdom."  Ravan's golden throne cracks apart in the burning hall.
 import React from 'react';
 import {CharFX, Chariot, Horse, Throne, Warrior} from '../characters';
-import {Hanuman, Ravan} from '../hanuman';
+import {Akshay as AkshayFig, Hanuman, Rakshasa, Ravan} from '../hanuman';
 import {flash, keys, ramp, rng} from '../lib';
 import {Clouds, Dust, DustBank, Fire, Layer, Ridge, Scene, Sky, Smoke} from '../world';
 import {ArmyRow} from './Warrior';
@@ -111,10 +111,8 @@ export const Akshay: React.FC<{t: number}> = ({t}) => {
 								<g transform="translate(380 -10)">
 									<Horse t={t} gallop={1.3} phase={0.6} fill="#1a100a" />
 								</g>
-								{/* the prince: a crowned warrior silhouette */}
-								<g transform="translate(-6 -120) scale(2.3)" fill="#160e0a" style={{color: '#160e0a'}}>
-									<Warrior t={t} seed={77} shield={false} />
-									<path d="M-16,-192 L-12,-214 L-4,-202 L0,-220 L4,-202 L12,-214 L16,-192 Z" fill="#8a6430" />
+								<g transform="translate(-6 -120) scale(0.95)">
+									<AkshayFig t={t} draw={ramp(t, 0.2, 1.4)} />
 								</g>
 							</Chariot>
 						</CharFX>
@@ -153,13 +151,13 @@ export const TailFire: React.FC<{t: number}> = ({t}) => {
 				<Sky top="#0e0808" mid="#3a1a14" bottom="#7a3a22" glow="#d06a30" glowX={800} glowY={900} glowR={700 + ign * 300} />
 			</Layer>
 			<Layer depth={0.4}>
-				<g fill="#0a0504" style={{color: '#0a0504'}}>
-					{Array.from({length: 9}, (_, i) => (
-						<g key={i} transform={`translate(${-120 + i * 160} ${1500 + (i % 2) * 30}) scale(1.1)`}>
-							<Warrior t={t} seed={90 + i} facing={i < 4 ? 1 : -1} shield={false} />
-						</g>
-					))}
-				</g>
+				{Array.from({length: 7}, (_, i) => (
+					<g key={i} transform={`translate(${-120 + i * 210} ${1560 + (i % 2) * 30}) scale(0.5)`}>
+						<CharFX dark={0.78} rim="#ff9a50" rimA={0.9} rimDir={[0, -1]} rimW={8}>
+							<Rakshasa t={t} seed={90 + i} facing={i < 3 ? 1 : -1} weapon={i % 2 ? 'spear' : 'none'} />
+						</CharFX>
+					</g>
+				))}
 			</Layer>
 			<Layer depth={1}>
 				<rect x={-800} y={1900} width={2700} height={800} fill="#100806" />

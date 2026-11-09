@@ -2,8 +2,8 @@
 // 8.44 - 11.64  "where we understand the meaning behind every line."  Palm leaves; each line of script lights up in turn.
 // 11.64 - 14.54 "Tulsidas describes Hanumanji as the son of"  The diya smoke rises into the vision of Hanuman in the sky.
 import React from 'react';
-import {CharFX, Sage} from '../characters';
-import {Hanuman} from '../hanuman';
+import {CharFX} from '../characters';
+import {Hanuman, Tulsidas} from '../hanuman';
 import {C, clamp, keys, ramp} from '../lib';
 import {Clouds, Dust, Fire, Layer, Scene, Sky, Smoke} from '../world';
 import {Leaf} from './Manuscript';
@@ -57,16 +57,8 @@ export const GangaWriting: React.FC<{t: number}> = ({t}) => (
 			<ellipse cx={560} cy={1240} rx={420} ry={360} fill="#f0a050" opacity={0.18} filter="url(#b70)" />
 			<g transform="translate(560 1470) scale(0.95)">
 				<CharFX dark={0.32} rim="#ffb468" rimA={0.95} rimDir={[0.9, -0.3]} rimW={8}>
-					<Sage t={t} pray={0.12} wind={0.3} />
+					<Tulsidas t={t} write={clamp(ramp(t, 0, 3.4))} />
 				</CharFX>
-			</g>
-			{/* low writing stand with a palm leaf */}
-			<g transform="translate(380 1470)">
-				<rect x={-150} y={-40} width={300} height={40} fill="#3a2414" />
-				<rect x={-130} y={-10} width={20} height={10} fill="#2a1a10" />
-				<g transform="translate(-140 -70) scale(0.3)">
-					<Leaf seed={7} rows={4} reveal={clamp(ramp(t, 0, 3.4))} />
-				</g>
 			</g>
 			<Diya t={t} x={790} y={1468} s={1.3} seed={9} />
 		</Layer>
@@ -132,7 +124,7 @@ export const Vision: React.FC<{t: number}> = ({t}) => {
 				<rect x={-800} y={1880} width={2700} height={900} fill="#1e1512" />
 				<g transform="translate(470 1880) scale(0.95)">
 					<CharFX dark={0.4} rim="#ffb468" rimDir={[0.9, -0.4]} rimW={8}>
-						<Sage t={t} pray={ramp(t, 0.8, 2.0)} wind={0.3} />
+						<Tulsidas t={t} write={1} lookUp={ramp(t, 0.6, 1.8)} pray={ramp(t, 1.2, 2.4)} />
 					</CharFX>
 				</g>
 				<Diya t={t} x={760} y={1878} s={1.3} seed={9} />
